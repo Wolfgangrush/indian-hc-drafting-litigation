@@ -1,0 +1,35 @@
+{
+  "name": "indian-hc-drafting",
+  "version": "0.1.0-alpha",
+  "description": "Open-source Claude-compatible plugin for drafting pleadings before any High Court of India. Bench-config-aware design — the plugin's structural skeleton is uniform across High Courts, and bench-specific elements (Court header, Appellate-Side / Original-Side Rules reference, annexure-marker convention, paper-size and font preference) are supplied by the user via a bench-config file in the case folder. Battle-tested workflows for Public Interest Litigation (Article 226), Writ Petitions (Civil and Criminal), Criminal Appeals, Applications under Section 482 CrPC / 528 BNSS (inherent powers), Anticipatory Bail (Section 438 CrPC / 482 BNSS), Regular Bail (Section 439 CrPC / 483 BNSS), Contempt Petitions, First and Second Appeals, Criminal Revisions, Motor Accident Claims Tribunal claims, and Matrimonial petitions. Includes the drafting pipeline (Reader to Format to Drafter to Verifier to Refiner to Overseer agents) and shared HC pleading base. Bombay High Court (Nagpur Bench) is the most-deeply-validated bench at the v0.1.0-alpha milestone; other benches are supported via bench-config at user-supplied configuration; deep per-bench validation pending community contribution.",
+  "author": {
+    "name": "Wolfgang Rush",
+    "url": "https://github.com/Wolfgangrush/indian-hc-drafting-litigation"
+  },
+  "license": "MIT",
+  "keywords": [
+    "law",
+    "legal",
+    "drafting",
+    "india",
+    "high-court",
+    "indian-high-court",
+    "all-high-courts",
+    "litigation",
+    "lawtech",
+    "pleadings",
+    "writ-petition",
+    "pil",
+    "bail",
+    "criminal-appeal",
+    "mact",
+    "matrimonial",
+    "bench-config",
+    "claude-compatible"
+  ],
+  "homepage": "https://github.com/Wolfgangrush/indian-hc-drafting-litigation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wolfgangrush/indian-hc-drafting-litigation"
+  }
+}
