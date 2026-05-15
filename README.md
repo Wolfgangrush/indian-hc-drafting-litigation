@@ -260,29 +260,7 @@ The plugin is built on the **Anthropic Agent SDK** convention — six markdown a
 
 ## Installation
 
-This is a Claude-compatible plugin in the Anthropic plugin format. It runs inside any Claude-compatible runtime — the **Claude Code CLI** or the **Claude Desktop application** — and it can also run inside a custom Anthropic-API-based runtime that respects the `SKILL.md` frontmatter convention.
-
-### Option A — Claude Code (terminal CLI)
-
-Claude Code is Anthropic's official command-line interface, available at <https://claude.com/claude-code>. Install Claude Code first (instructions on Anthropic's site), then:
-
-```bash
-# 1. Navigate to the Claude Code plugins folder (it will be auto-created on first use)
-mkdir -p ~/.claude/plugins
-cd ~/.claude/plugins
-
-# 2. Clone the plugin
-git clone https://github.com/Wolfgangrush/indian-hc-drafting-litigation.git indian-hc-drafting
-
-# 3. Verify Claude Code picks it up
-claude plugin list
-```
-
-You should see `indian-hc-drafting` in the list. Now open any folder you wish to use as your case folder, launch Claude Code from inside that folder, and start invoking skills.
-
-### Option B — Claude Desktop application (macOS / Windows / Linux)
-
-Claude Desktop is Anthropic's GUI application (available at <https://claude.ai/download>). The plugin folder location depends on your OS:
+This is a Claude-compatible plugin in the Anthropic plugin format, designed to run inside the **Claude Desktop application** (available at <https://claude.ai/download>). The plugin folder location depends on your OS:
 
 | OS | Plugin folder path |
 |---|---|
@@ -290,7 +268,7 @@ Claude Desktop is Anthropic's GUI application (available at <https://claude.ai/d
 | **Windows** | `%APPDATA%\Claude\plugins\` (typically `C:\Users\<you>\AppData\Roaming\Claude\plugins\`) |
 | **Linux** | `~/.config/Claude/plugins/` |
 
-Then clone the plugin into that folder:
+Clone the plugin into that folder:
 
 ```bash
 # macOS / Linux
@@ -306,7 +284,7 @@ git clone https://github.com/Wolfgangrush/indian-hc-drafting-litigation.git indi
 
 Restart the Claude Desktop application. The plugin will be auto-discovered on the next session start.
 
-### Option C — Anthropic Plugin Marketplace (when available)
+### Anthropic Plugin Marketplace (when available)
 
 When the plugin lands on the Anthropic Plugin Marketplace, you will be able to install it from inside the application's plugin browser without using `git` directly. Until then, the manual clone steps above are the canonical install method.
 
@@ -314,56 +292,56 @@ When the plugin lands on the Anthropic Plugin Marketplace, you will be able to i
 
 In a Claude session, type any of the following:
 
-- *"draft pil"* — should trigger `pil-draft` (the PIL drafting skill)
-- *"draft anticipatory bail"* — should trigger `anticipatory-bail-draft`
-- `/pil-draft` — explicit slash-invocation
+- *"draft criminal appeal"* — should trigger `criminal-appeal-draft`
+- *"draft second appeal"* — should trigger `second-appeal-draft`
+- *"draft application 482"* — should trigger `application-482-draft`
+- `/criminal-appeal-draft` — explicit slash-invocation
 
-Claude should respond by reading the skill's instructions and asking you for the case folder path or for the case-specific facts. If Claude does not pick up the skill, run `claude plugin list` (in CLI) or restart the Desktop app, and confirm the plugin folder is at the correct path.
+Claude should respond by reading the skill's instructions and asking you for the case folder path or for the case-specific facts. If Claude does not pick up the skill, restart the Desktop app and confirm the plugin folder is at the correct path.
 
 ---
 
 ## Your first pleading — step-by-step walkthrough
 
-Suppose you wish to draft a **Public Interest Litigation** before the **Bombay High Court Nagpur Bench**.
+Suppose you wish to draft a **Criminal Appeal** before the **Allahabad High Court** against a conviction order passed by the Sessions Court.
 
 ### Step 1 — create a case folder
 
 ```
 ~/Desktop/cases/
-└── pil-pollution-river-NN/
-    ├── bench-config.md        ← copied from bench-config/exemplars/bombay-hc-nagpur.md
+└── crl-appeal-CASE-NUMBER/
+    ├── bench-config.md           ← copied from bench-config/exemplars/allahabad-hc.md
     ├── facts/
-    │   ├── representation-DD.MM.YYYY.pdf
-    │   ├── pollution-report-DD.MM.YYYY.pdf
-    │   └── photographs/
+    │   ├── trial-court-judgment-DD.MM.YYYY.pdf
+    │   ├── charge-sheet-DD.MM.YYYY.pdf
+    │   ├── prosecution-evidence-summary.pdf
+    │   ├── defence-evidence-summary.pdf
+    │   └── sentence-order-DD.MM.YYYY.pdf
     ├── laws/
-    │   ├── water-act-1974.pdf
-    │   └── environment-protection-act-1986.pdf
-    └── notes.md                ← your free-form notes
+    │   ├── crpc-1973.pdf
+    │   ├── bnss-2023.pdf
+    │   └── ipc-1860.pdf
+    └── notes.md                   ← your free-form notes
 ```
 
 ### Step 2 — copy the bench-config exemplar
 
-From inside the plugin folder, copy the bench-config exemplar for your bench:
+In the Claude application's file browser, navigate to the plugin's folder and copy the bench-config exemplar for your bench:
 
-```bash
-cp ~/.claude/plugins/indian-hc-drafting/bench-config/exemplars/bombay-hc-nagpur.md \
-   ~/Desktop/cases/pil-pollution-river-NN/bench-config.md
+```
+plugin_folder/bench-config/exemplars/allahabad-hc.md  →  case_folder/bench-config.md
 ```
 
-Open `bench-config.md` and verify the values (Court header, parties-separator, annexure-prefix, paper-size, etc.). Edit any value that has changed per a recent Practice Direction.
+Open `bench-config.md` in any text editor and verify the values (Court header, parties-separator, annexure-prefix, paper-size, etc.). Edit any value that has changed per a recent Practice Direction issued by your bench.
 
-### Step 3 — launch Claude inside the case folder
+### Step 3 — open the case folder in Claude
 
-```bash
-cd ~/Desktop/cases/pil-pollution-river-NN/
-claude
-```
+In the Claude Desktop application, point Claude at the case folder using the application's file-browser feature.
 
 ### Step 4 — invoke the skill
 
 ```
-draft pil
+draft criminal appeal
 ```
 
 The plugin will run the **Reader** agent first — it will read your case folder, extract facts, write `case-facts.md` and `annexure-candidates.md`, and halt if any required law PDF is missing.
@@ -476,14 +454,12 @@ This plugin opens that door. It is most-deeply-validated for the **Bombay High C
 
 ## Roadmap
 
-- [x] **v0.1.0-alpha** — universal HC pleading skeleton + 13 case-type skills + 6-agent pipeline + bench-config architecture + 28 bench exemplars + deep Bombay HC Nagpur validation
-- [ ] **v0.1.0** — Bombay HC Principal Bench (Mumbai) + Aurangabad + Goa validation pass; community feedback integration
-- [ ] **v0.2.0** — Delhi HC + Madras HC bench-config calibration pass (community-contributed)
-- [ ] **v0.3.0** — Calcutta HC + Karnataka HC bench-config calibration pass
-- [ ] **v0.4.0** — Allahabad HC + Punjab and Haryana HC + Gujarat HC bench-config calibration pass
-- [ ] **v0.5.0** — Kerala HC + Telangana / Andhra Pradesh HC + Rajasthan HC bench-config calibration pass
-- [ ] **v0.6.0** — Remaining benches (Orissa, Patna, MP, Gauhati, Sikkim, Tripura, Meghalaya, Manipur, J&K-Ladakh, Jharkhand, Chhattisgarh, HP, Uttarakhand)
-- [ ] **v1.0.0** — Stable release with all-bench community-validated formatting
+- [x] **v0.1.0-alpha (current)** — universal HC pleading skeleton + 13 case-type skills + 6-agent pipeline + bench-config architecture + 28 bench exemplars
+- [ ] **v0.1.x** — bug fixes, quality-gate iteration, language-register polish, formatting refinements driven by user feedback
+- [ ] **v0.x onward** — bench-config calibration deepening per High Court, additional case-type skills, and procedural-rule updates as they arrive
+- [ ] **v1.0.0** — Stable release after community-validated formatting and field-testing
+
+Per-bench deep validation will arrive in the order advocates contribute. The plugin's bench-config architecture means any advocate filing regularly before a given bench can deepen the calibration for that bench by opening an issue or pull request with their bench's idiom — no central roadmap is needed to enable that. The roadmap above is therefore intentionally open-ended.
 
 ---
 
