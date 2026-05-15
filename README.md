@@ -14,7 +14,7 @@
 2. [Bench coverage — all 25 Indian High Courts](#bench-coverage--all-25-indian-high-courts)
 3. [Case-type skills (full inventory with statutory authority)](#case-type-skills-full-inventory)
 4. [The 6-agent drafting pipeline (what each agent does)](#the-6-agent-drafting-pipeline)
-5. [Installation](#installation) — Claude Code CLI **and** Claude Desktop application
+5. [Installation](#installation) — Claude Desktop application
 6. [Your first pleading — step-by-step walkthrough](#your-first-pleading--step-by-step-walkthrough)
 7. [The `bench-config.md` file — how bench customisation works](#the-bench-configmd-file)
 8. [Why MIT License (and not Apache 2.0, GPL, or anything else)](#why-mit-license)
@@ -32,7 +32,7 @@
 
 ## What this plugin does
 
-This plugin lets an Indian advocate, sitting inside any Claude-compatible AI runtime (Claude Code CLI or the Claude Desktop application), point to a case folder on disk and obtain a complete High-Court pleading in `.docx` form — Cause Title, Facts, Grounds, Prayer, Verification, Index, Synopsis, List of Annexures, and the accompanying applications (stay / condonation of delay / exemption / urgency) — formatted in the **specific High Court bench's idiom** sourced from a `bench-config.md` file the user places in the case folder.
+This plugin lets an Indian advocate, sitting inside the Claude Desktop application, point to a case folder on disk and obtain a complete High-Court pleading in `.docx` form — Cause Title, Facts, Grounds, Prayer, Verification, Index, Synopsis, List of Annexures, and the accompanying applications (stay / condonation of delay / exemption / urgency) — formatted in the **specific High Court bench's idiom** sourced from a `bench-config.md` file the user places in the case folder.
 
 The pipeline is six agents running in sequence:
 
@@ -476,7 +476,7 @@ Advocates who file regularly before any Indian High Court are invited to contrib
 
 Pull requests are welcome with a one-paragraph explanation of the change and a reference to the bench rule or Practice Direction that justifies it.
 
-This plugin is open source under MIT. No proprietary gating. No login. No telemetry. No tracking of who uses the plugin or what cases they file.
+This plugin is open source under MIT.
 
 ---
 
