@@ -297,7 +297,7 @@ Validated bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplar
 
 | Exemplar | Validation depth | Source |
 |---|---|---|
-| `bombay-hc-nagpur.md` | Deep · battle-tested | Bombay HC AS Rules 1960, Nagpur Bench Practice Notes |
+| `bombay-hc-nagpur.md` | Researched · awaiting Registry validation | Bombay HC AS Rules 1960, Nagpur Bench Practice Notes |
 | `bombay-hc-principal-mumbai.md` | Bench-config supported | Bombay HC AS + OS Rules, Principal-Bench Practice Notes |
 | `bombay-hc-aurangabad.md` | Bench-config supported | Bombay HC AS Rules + Aurangabad Bench Practice |
 | `bombay-hc-goa.md` | Bench-config supported | Bombay HC AS Rules + Goa Bench Practice |
@@ -327,9 +327,8 @@ Validated bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplar
 | `tripura-hc.md` | Stub · community contribution welcomed | Tripura HC Rules |
 
 **Validation depth taxonomy:**
-- **Deep · battle-tested:** Author has filed pleadings before this bench and tested the bench-config values against Registry acceptance.
-- **Researched · awaiting Registry validation:** Bench-config values sourced from the bench's official Rules + practice texts; not yet tested in real filing.
-- **Stub · community contribution welcomed:** Bench is named but bench-config exemplar is a minimal placeholder; advocates practising at this bench are invited to submit a filled exemplar.
+- **Researched · awaiting Registry validation:** Bench-config values sourced from the bench's official Rules + public practice texts; awaiting community Registry-acceptance validation.
+- **Stub · community contribution welcomed:** Bench is named but bench-config exemplar is a minimal placeholder; advocates practising at this bench are invited to submit a filled exemplar via PR.
 
 ## DEPENDENCY ON OTHER FILES
 

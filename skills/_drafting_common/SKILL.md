@@ -79,8 +79,7 @@ Per-HC bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`
 | Tripura HC | `IN THE HIGH COURT OF TRIPURA AT AGARTALA.` | per Tripura HC Rules | post-2013 establishment |
 
 Validation depth taxonomy:
-- **Deep · battle-tested:** Bombay HC Nagpur (the author's primary practice court).
-- **Researched · awaiting Registry validation:** Bombay Principal/Aurangabad/Goa, Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, Patna, Orissa, Telangana, Andhra Pradesh — bench-config values sourced from each HC's official Rules + practice texts; awaiting community Registry-acceptance validation.
+- **Researched · awaiting Registry-acceptance validation:** Bombay (Nagpur, Principal, Aurangabad, Goa), Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, Patna, Orissa, Telangana, Andhra Pradesh — bench-config values sourced from each HC's official Rules + public practice texts; awaiting community Registry-acceptance validation.
 - **Stub · community contribution welcomed:** Gauhati, HP, J&K+Ladakh, Jharkhand, Chhattisgarh, MP, Uttarakhand, Manipur, Meghalaya, Sikkim, Tripura.
 
 ## ANNEXURE MECHANISM (bench-config-driven)

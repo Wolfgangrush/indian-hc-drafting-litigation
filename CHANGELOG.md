@@ -18,7 +18,7 @@ All notable changes to this plugin are documented here. Versioning follows [Sema
 
 ### Renamed from `bombay-hc-drafting` to `indian-hc-drafting`
 
-The plugin's scope has been broadened from Bombay HC Nagpur specifically to ALL High Courts of India via the new bench-config architecture. Bombay HC Nagpur remains the most-deeply-validated bench at this milestone; other benches are supported via bench-config supplied by the user at case-folder time. Validation deepening for non-Bombay benches will come from community contribution.
+The plugin's scope has been broadened from Bombay HC Nagpur specifically to ALL High Courts of India via the new bench-config architecture. Per-bench specifics are supplied by the user via a `bench-config.md` file in the user's case folder at case-folder time. Registry-acceptance validation per bench will come from community contribution.
 
 ### Added (over and above the prior `bombay-hc-drafting` content)
 

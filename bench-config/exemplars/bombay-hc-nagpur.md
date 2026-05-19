@@ -1,6 +1,6 @@
 # bench-config — Bombay High Court, Nagpur Bench
 
-**Validation depth:** Deep · battle-tested · author's primary practice court.
+**Validation depth:** Researched · awaiting Registry-acceptance validation.
 **Source authorities:** Bombay High Court (Appellate Side) Rules 1960; Bombay HC Nagpur Bench Practice Notes; Bombay HC Civil Manual; Bombay HC Criminal Manual.
 
 ---

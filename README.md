@@ -64,7 +64,7 @@ The plugin ships with **28 ready-to-copy bench-config exemplars** — one per Hi
 
 | # | High Court | Seat | Bench-config exemplar | Validation depth at v0.1.0-alpha |
 |---|---|---|---|---|
-| 1 | **Bombay High Court — Nagpur Bench** | Nagpur | `bench-config/exemplars/bombay-hc-nagpur.md` | **Deep · battle-tested** (author's primary practice court) |
+| 1 | **Bombay High Court — Nagpur Bench** | Nagpur | `bench-config/exemplars/bombay-hc-nagpur.md` | bench-config supported · community Registry-validation welcomed |
 | 2 | **Bombay High Court — Principal Bench (Mumbai)** | Mumbai | `bench-config/exemplars/bombay-hc-principal-mumbai.md` | bench-config supported · validation deepening v0.1.x |
 | 3 | **Bombay High Court — Aurangabad Bench** | Aurangabad | `bench-config/exemplars/bombay-hc-aurangabad.md` | bench-config supported · validation deepening v0.1.x |
 | 4 | **Bombay High Court — Goa Bench (Panaji)** | Panaji | `bench-config/exemplars/bombay-hc-goa.md` | bench-config supported · validation deepening v0.1.x |
@@ -464,7 +464,7 @@ India has roughly **1.4 million enrolled advocates** and **twenty-five High Cour
 
 Foreign legal-AI tools cannot fill this gap. The training data does not exist outside the country; the procedural conventions are jurisdiction-specific; and the formatting requirements at the Registry counter of a Bombay or Madras or Calcutta High Court are matters of bench practice that no foreign tool has encountered.
 
-This plugin opens that door. It is most-deeply-validated for the **Bombay High Court (Nagpur Bench)** — the author's primary practice court. Other benches are supported via bench-config and the depth of per-bench validation will come from community contribution by advocates who file regularly at those benches.
+This plugin opens that door. Benches are supported via bench-config; Registry-acceptance validation per bench is welcomed via PR from advocates familiar with those benches.
 
 ---
 
