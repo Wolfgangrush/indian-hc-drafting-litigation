@@ -194,7 +194,7 @@ The plugin is built on the **Anthropic Agent SDK** convention — six markdown a
 
 **Why it exists:** without a faithful fact-extraction step, the Drafter would either hallucinate facts or process raw client documents through the AI — both of which the plugin prevents.
 
-**Skills loaded:** `_drafting_common` (for AAAK-substitution / privacy firewall rules) + the specific case-type skill's `case-facts-questions.md`.
+**Skills loaded:** `_drafting_common` (for pseudonymisation / privacy firewall rules) + the specific case-type skill's `case-facts-questions.md`.
 
 ### 2. `format` — second agent
 
