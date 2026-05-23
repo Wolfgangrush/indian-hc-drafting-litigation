@@ -65,130 +65,124 @@ For every case type, the final output is a SINGLE `.docx` file containing all se
 └─────────────────────────────────────────────────────────┘
 ```
 
-## ① MAIN PLEADING — UNIVERSAL TEMPLATE (bench-config-substituted)
+## MARKDOWN HEADING DISCIPLINE (load-bearing — Drafter must follow)
+
+The Drafter writes Markdown. Pandoc converts the Markdown to `.docx` using the **`reference.docx` shipped at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`**, which has locked Word styles for Bombay HC Nagpur formatting (TNR 14pt, 1.5 spacing, 4cm left margin, A4, Heading 1 = bold centered, Heading 2 = bold centered with letter-spacing for the spaced `F A C T S` effect, Heading 3 = bold left for ground sub-headers).
+
+**For the styles to apply, the Drafter MUST use Markdown headings — not plain text — for the following structural elements:**
+
+| Markdown | Rendered as | Used for |
+|---|---|---|
+| `# Heading 1` | Bold centered TNR 14pt, page-anchor | Court header line; case-number line; INDEX cover; SYNOPSIS cover; LIST OF ANNEXURES cover |
+| `## Heading 2` | Bold centered with letter-spacing | Section headers — `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N` |
+| `### Heading 3` | Bold left TNR 14pt | Sub-section headers inside Grounds; Application titles inside Accompanying Applications block |
+| Body paragraph | TNR 14pt justified, 1.5 spacing, 0.5cm first-line indent | Everything else |
+
+**Tables (Index, List of Annexures, Synopsis Dates–Events) MUST use pandoc pipe tables with column widths controlled via the dashes-row width.** The reference.docx locks `tblLayout = fixed` so column widths are honoured. Recommended dashes-row widths for the standard Index/LoA table (proportions sum to 100):
 
 ```
-{{bench_config.court_header}}
+| Sr.No | Annx | Particulars                                        | Date | Pgs |
+|:-----:|:----:|:---------------------------------------------------|:----:|:---:|
+| 1.    |      | Synopsis                                           |      |  i  |
+| 2.    |      | [Appeal/Petition]                                  |      |  1  |
+```
 
-[CASE TYPE LINE] NO._______/[YEAR]
+(Use the colons in the alignment row to enforce centered headers.)
+
+**Cover-page discipline (NON-NEGOTIABLE — Verifier checks):**
+- INDEX, SYNOPSIS, and LIST OF ANNEXURES each begin on a new page.
+- Each cover page carries ONLY: court header (`#`) + case-number line (`#`) + short cause-title (Petitioner short name `///VERSUS///` Respondent short name) + the section header (`##`) + the table.
+- DO NOT repeat the full Petitioner/Respondent address block on cover pages. Full party block appears only on the Main Petition cover.
+
+## ① MAIN PLEADING — UNIVERSAL TEMPLATE (bench-config-substituted; Markdown-heading-disciplined)
+
+```markdown
+# {{bench_config.court_header}}
+
+# [CASE TYPE LINE] NO._______/[YEAR]
+
 {{bench_config.act_code_line_if_applicable}}
 
-([In the matter of ... case-specific descriptor: e.g.,
-"In the matter of challenging the judgment dated <date>
-passed by <lower court> in <case no> ..."])
+(In the matter of [case-specific descriptor — e.g., "challenging the judgment dated <date> passed by <lower court> in <case no>…"])
 
-[PARTIES BLOCK]
+**[APPELLANT / PETITIONER / APPLICANT]:**
 
-[APPELLANT / PETITIONER / APPLICANT]:
-<Name> S/o / D/o <Father's name>
-Aged about <age> years, Occ. <occupation>, R/o. <address>
+<Name> S/o / D/o <Father's name>,
+Aged about <age> years,
+Occupation – <occupation>,
+Residing at <address>.
 
 {{bench_config.parties_separator}}
 
-RESPONDENT:
-1.  <Respondent 1>
-2.  <Other respondents if any>
+**RESPONDENT[S]:**
 
+1. <Respondent 1>
+2. <Other respondents if any>
 
-[STATUTORY OPENING — case-type-specific. Fill from extending skill.]
-
+# [STATUTORY OPENING — case-type-specific. Fill from extending skill.]
 
 {{bench_config.salutation_opener}}
 
-  •  [Opening fact paragraph: nature of the matter being challenged
-     or the relief sought, with date(s) and authority being
-     impugned. Include inline annexure marker for the impugned
-     order: "...is annexed herewith and marked as
-     {{bench_config.annexure_prefix}}A."]
+[Opening fact paragraph: nature of the matter being challenged or the relief sought, with date(s) and authority being impugned. Include inline annexure marker for the impugned order: "…is annexed herewith and marked as **{{bench_config.annexure_prefix}}A**."]
 
+## {{bench_config.section_header.facts}}
 
-{{bench_config.section_header.facts}}
+1. The [Petitioner/Appellant] is a bonafide citizen of India and a permanent resident of the above-mentioned address.
 
-  •  The [Applicant] is a bonafide and peace-loving citizen of
-     India, and is a permanent resident of the above-mentioned
-     address.
+2. [Chronological narrative paragraphs. Every documentary fact gets an inline annexure marker (`{{bench_config.annexure_prefix}}A, B, C, …` observing `{{bench_config.annexure_letter_omissions}}` — Karnataka HC omits letter I). Each paragraph numbered.]
 
-  •  [Chronological narrative paragraphs. Every documentary fact
-     gets an inline annexure marker
-     ({{bench_config.annexure_prefix}}A, B, C, ...
-     observing {{bench_config.annexure_letter_omissions}} —
-     e.g., Karnataka HC omits the letter I).
-     Each paragraph numbered.]
+3. [Defence / petitioner's version, where applicable.]
 
-  •  [The prosecution/petitioner case in nutshell is as under: -]
-     (used in criminal appeals to summarise opposing version)
+4. By the impugned [order/judgment] dated <date>, the learned [court] in <case-no> [the disposition]. The [Petitioner/Appellant] is filing the present [petition/memo of appeal] on the following grounds, without prejudice to each other.
 
-  •  [Defence / petitioner's version, where applicable]
+## {{bench_config.section_header.grounds}}
 
-  •  By the impugned [order/judgment] dated <date>, the learned
-     [court] in <case-no>, the Appellant is filing the present
-     [memo of appeal / petition] with the following grounds
-     without causing prejudice to each other.
+I. **[Ground heading]** — [The learned Court erred in law and facts of the case and failed to appreciate the evidence in proper perspective and wrongly [convicted/dismissed/granted/rejected]…]
 
+II. **[Ground heading]** — [Additional grounds — case-type-specific structure. Each ground = one paragraph. Anchor to precedent paragraph numbers ONLY for precedents whose PDFs are supplied in `<case-folder>/law-pdfs/`.]
 
-{{bench_config.section_header.grounds}}
+III. **[Ground heading]** — [That the order is illegal, erroneous and liable to be set aside.]
 
-  •  The learned [Court] erred in law and facts of the case
-     and failed to appreciate the evidence in proper perspective
-     and wrongly [convicted/dismissed/granted/rejected] ...
+IV. **Reservation** — That the [Petitioner/Appellant] reserves [the] right to raise additional grounds at the time of hearing.
 
-  •  [Additional grounds — case-type-specific structure. Each
-     ground numbered/bulleted.]
+V. **Limitation and absence of parallel remedy** — That the present [petition/appeal] is filed within limitation and the impugned [order/judgment] has not been challenged before the Hon'ble Supreme Court of India or this Hon'ble High Court at any earlier time.
 
-  •  That the [judgment/order] passed by the learned [Court] is
-     illegal, erroneous and liable to be set aside.
-
-  •  That the [appellants/petitioners] reserve [their] rights to
-     raise additional grounds challenging the [order] during the
-     course of hearing.
-
-  •  That, the [appellants/petitioners] have filed instant
-     [appeal/petition] within limitation and [have] not
-     challenged the impugned [judgment/order] before the Hon'ble
-     Supreme Court of India or this Hon'ble High Court at any
-     time earlier.
-
-
-PRAYER -
+## {{bench_config.section_header.prayer}}
 
 {{bench_config.prayer_opener}}
 
-a.  [Primary relief — case-type-specific. E.g., for criminal
-     appeal: "Quash and set aside the Judgment and Order of
-     conviction dated <date> ... and ACQUIT the Appellant ..."]
+(a) [Primary relief — case-type-specific.]
 
-b.  {{bench_config.prayer_catchall_last_clause}}
-
+(b) {{bench_config.prayer_catchall_last_clause}}
 
 {{bench_config.counsel_block_template}}
 
+[OPTIONAL: Affidavit dispensation note where applicable, per bench-config.]
 
-[OPTIONAL: Affidavit dispensation note where applicable, per
- bench-config.]
-
-[OPTIONAL — for appeals: "Notes on Limitation:" block with order
-date, last day for filing, actual filing date, days delay.]
+[OPTIONAL — for appeals: "Notes on Limitation:" block with order date, last day for filing, actual filing date, days delay.]
 ```
 
-## ② INDEX (every pleading)
+## ② INDEX (cover page — short cause-title only; full party block does NOT appear here)
 
-```
-{{bench_config.court_header}}
+```markdown
+\newpage
 
-[CASE TYPE] NO._______/[YEAR]
+# {{bench_config.court_header}}
 
-APPELLANT
-<Name>
+# [CASE TYPE] NO._______/[YEAR]
+
+**[Petitioner/Appellant short name]**
+
 {{bench_config.parties_separator}}
-RESPONDENT
-<State + others>
 
-{{bench_config.section_header.index}}
+**[Respondent short name + "& Ors."]**
+
+## {{bench_config.section_header.index}}
 
 | Sr.No | {{bench_config.annexure_column_label}} | Particulars                                        | Date | Pgs |
-|-------|------|----------------------------------------------------|------|-----|
-| 1.    |      | Synopsis                                           |      |     |
-| 2.    |      | [Appeal/Petition u/s ...]                          |      |     |
+|:-----:|:----:|:---------------------------------------------------|:----:|:---:|
+| 1.    |      | Synopsis                                           |      |  i  |
+| 2.    |      | [Appeal/Petition u/s …]                            |      |  1  |
 | 3.    |      | List of Annexures                                  |      |     |
 | 4.    | A    | Copy of [impugned order / primary document]        | <dt> |     |
 | 5.    | B    | [(Colly) where applicable] Other annexed documents | <dt> |     |
@@ -196,43 +190,67 @@ RESPONDENT
 {{bench_config.counsel_block_template}}
 ```
 
-## ③ SYNOPSIS (every pleading)
+## ③ SYNOPSIS (cover page — short cause-title only)
 
-```
-{{bench_config.section_header.synopsis}}
+```markdown
+\newpage
 
-Dates           Events
---------------  -----------------------------------------------
-<chronological events with dates, one per row>
+# {{bench_config.court_header}}
+
+# [CASE TYPE] NO._______/[YEAR]
+
+**[Petitioner/Appellant short name]**
+
+{{bench_config.parties_separator}}
+
+**[Respondent short name + "& Ors."]**
+
+## {{bench_config.section_header.synopsis}}
+
+| Date | Event |
+|:----:|:------|
+| <dt> | <event narrative — one line per row> |
+| <dt> | <event narrative> |
+| <dt> | <event narrative> |
 
 Hence this [Appeal/Petition].
 
+**POINT(S) TO BE CONSIDERED:**
 
-POINT(S) TO BE CONSIDERED:
 As raised in the Memo of [Appeal/Petition].
 
+**ACTS & RULES:**
 
-ACTS & RULES:
 - <statute 1>
 - <statute 2>
 - <statute 3>
 
+**CITATIONS:**
 
-CITATIONS:
-Will be cited at the time of hearing with the permission of this
-Hon'ble Court.
-
+Will be cited at the time of hearing with the permission of this Hon'ble Court.
 
 {{bench_config.counsel_block_template}}
 ```
 
-## ④ LIST OF ANNEXURES (every pleading)
+## ④ LIST OF ANNEXURES (cover page — short cause-title only)
 
-```
-{{bench_config.section_header.list_of_annexures}}
+```markdown
+\newpage
+
+# {{bench_config.court_header}}
+
+# [CASE TYPE] NO._______/[YEAR]
+
+**[Petitioner/Appellant short name]**
+
+{{bench_config.parties_separator}}
+
+**[Respondent short name + "& Ors."]**
+
+## {{bench_config.section_header.list_of_annexures}}
 
 | Sr.No | {{bench_config.annexure_column_label}} | Particulars                       | Date | Pgs |
-|-------|------|-----------------------------------|------|-----|
+|:-----:|:----:|:----------------------------------|:----:|:---:|
 | 1.    | A    | <particulars from inline markers> | <dt> |     |
 | 2.    | B    | <particulars>                     | <dt> |     |
 | 3.    | C    | <particulars>                     | <dt> |     |

@@ -6,11 +6,60 @@ All notable changes to this plugin are documented here. Versioning follows [Sema
 
 ## [Unreleased]
 
-### Pending before v0.1.0 stable
-- User-paste style references into each case-type skill's `format-from-user.md`
-- Bench-config validation pass for Bombay HC Principal Bench (Mumbai), Aurangabad Bench, Goa Bench
-- Sample bench-config templates submitted by community contributors for non-Bombay HCs
-- First Registry-validation pass on a sample filing at Bombay HC Nagpur
+### Pending before v0.2.0 stable
+- Reader / Format / Drafter context-caching layer so the three stages share one bench-config + skill load instead of three sequential loads
+- Optional Haiku-routing for the Reader stage (extraction is pattern-match work, lower-tier-fit)
+- Per-case-folder `reference.docx` override mechanism documented end-to-end
+- First Registry-validation pass on a sample filing at Bombay HC Nagpur using the v0.2 render path
+
+---
+
+## [0.2.0-alpha] — 2026-05-24
+
+### Critical render-defect repair (from the 2026-05-24 EPFO test run)
+
+The v0.1.0-alpha render path produced filing-grade Markdown but the pandoc → `.docx` conversion failed Bombay HC Registry expectations on multiple counts (title not bold, `F A C T S` rendered left-aligned in plain body text, Index table column-headers wrapping vertically, Petitioner/Respondent block leaking onto Index cover page, INDEX rendered in blue Markdown-style heading, ~6,200-word bloat for a single-issue WP). This release repairs the render path.
+
+### Added
+
+- **Pre-customised Bombay HC Nagpur `reference.docx`** at `skills/_hc_pleading_base/reference.docx` with locked Word styles:
+  - Body (Normal): TNR 14pt, 1.5 line spacing, justified, 0.5cm first-line indent
+  - Heading 1: TNR 14pt **bold centered** (for court header, case-number line, cover-page anchors)
+  - Heading 2: TNR 14pt **bold centered with letter-spacing** (renders `F A C T S` / `G R O U N D S` / `P R A Y E R` etc. correctly)
+  - Heading 3: TNR 14pt **bold left-aligned** (for ground sub-headers, application titles)
+  - Title style: TNR 14pt bold centered
+  - Tables: `tblLayout = fixed` so pipe-table column proportions are honoured
+  - Page setup: A4, 4cm left / 2.5cm right / 2.5cm top / 2.5cm bottom margins
+  - Page numbers: centred at bottom, TNR 11pt
+- **`build_reference_docx.py`** — reproducible build script for the shipped reference.docx. Plugin maintainers re-run this when styles need updating; advocates do not run it directly.
+- **MARKDOWN HEADING DISCIPLINE** section in `_hc_pleading_base/SKILL.md` documenting the Markdown → Word-style mapping the Drafter must follow.
+- **VERBOSITY DISCIPLINE** section in `_drafting_common/SKILL.md` setting per-case-type word-count targets and hard ceilings (Civil/Criminal WP target 3,500–5,000 words, hard ceiling 6,500).
+- **PIPELINE-OPTIONALITY** section in `_drafting_common/SKILL.md` documenting Stages 4–6 (Verifier / Refiner / Overseer) as OPTIONAL QC layers. Default exit point is now after Stage 3 (Drafter) — advocate opts in to the QC stages.
+- **COVER-PAGE DISCIPLINE** rule in `_hc_pleading_base/SKILL.md` — Index, Synopsis, and List of Annexures each begin on a new page and carry ONLY court header + case-number + short cause-title + section header + table + counsel block. Full Petitioner/Respondent address block stays on the Main Petition cover only.
+
+### Changed
+
+- **Skeleton in `_hc_pleading_base/SKILL.md`** rewritten to use Markdown headings (`# Court header`, `## F A C T S`, etc.) instead of plain text. Pandoc now maps the headings to the locked Word styles in `reference.docx`.
+- **Drafter agent prompt in `agents/drafter/drafter.md`** extended with explicit instructions to: use Markdown headings; use the shipped reference.docx (not auto-generate one); honour verbosity ceilings; follow cover-page discipline; use pandoc pipe-table syntax with colon-anchored alignment row for fixed column widths.
+- **Pandoc invocation documented end-to-end** in `_drafting_common/SKILL.md` §OUTPUT FORMAT. Required pandoc command:
+  ```bash
+  pandoc draft-v1.md -o draft-v1.docx \
+    --reference-doc="${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx" \
+    --from=markdown+pipe_tables+raw_tex
+  ```
+
+### Removed
+
+- The auto-generation of a fresh `reference.docx` in the case-folder output directory (this was the source of the v0.1.0 render defects). Drafter now uses the shipped reference.docx or a per-case override only.
+- The "Triple-verify is mandatory" framing from `_drafting_common/SKILL.md` — replaced with explicit OPTIONAL framing per the new Pipeline-optionality section.
+
+### Migration note
+
+Existing case folders produced under v0.1.0 are unaffected; their draft-v1.docx outputs remain on disk. To re-render a v0.1.0 draft using the v0.2.0 styles, re-run the Drafter on the existing `case-facts.md` + `format-shell.md`. The new reference.docx will produce a correctly-formatted draft.
+
+### Cost / token-budget note
+
+Running the full 6-agent pipeline burns approximately 600K tokens per draft, which can exhaust an advocate's Claude session limit in one drafting cycle. v0.2.0 makes Stages 4–6 OPTIONAL so a baseline Reader → Format → Drafter run (~280K tokens) is sufficient for routine pleadings. The optional QC stages remain available for high-stakes matters. v0.3 will add context-caching across Stages 1–3 to reduce the baseline further.
 
 ---
 

@@ -37,7 +37,7 @@ These rules apply to every drafting agent:
 - **Statutes from training data ONLY for:** Constitution of India, CPC 1908, CrPC 1973, IPC 1860, IEA 1872, BNS 2023, BNSS 2023, BSA 2023. All other statutes (POCSO, NDPS, MV Act, IT Act, Arbitration Act, etc.) must be supplied by the user as PDF before they can be cited. Reader flags missing law PDFs and STOPS.
 - **Case citations — STRICT.** Every case citation in the output MUST trace to the user-supplied `citations.md`. Drafter NEVER generates a case name + citation pair from training memory. Where a ground requires support and no user-supplied citation matches, the Drafter writes `[CITATION NEEDED: <legal proposition>]` and the Verifier flags it.
 - **File-based pipeline.** Each agent writes its output to a file → next agent reads. Auditable chain of custody.
-- **Triple-verify.** Verifier + Refiner + Overseer = 3 independent passes before the draft is shown to the user.
+- **Triple-verify is OPTIONAL.** Verifier + Refiner + Overseer = 3 independent QC passes available to the advocate at their discretion. None is mandatory before filing. See §Pipeline-optionality below.
 - **Final draft must be indistinguishable from a manually-drafted pleading.** No "AI-style" markers.
 - **The user remains the responsible advocate.** The plugin is a drafting aid; every draft must be reviewed before filing.
 
@@ -122,9 +122,76 @@ Each accompanying application repeats its own cause title (in the bench's idiom)
 ## OUTPUT FORMAT
 
 - **File type:** `.docx`
-- **Conversion tool:** pandoc (if installed) with a `reference.docx` template for the user's bench (paper size + font + spacing + margins per `bench-config.md`). Fallback: python-docx.
+- **Conversion tool:** pandoc (required) with the **shipped** `reference.docx` template at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`. The shipped reference has locked Word styles for Bombay HC Nagpur formatting (TNR 14pt, 1.5 line spacing, 4cm left margin, A4, Heading 1 = bold centered, Heading 2 = bold centered with letter-spacing). For benches requiring different formatting (Delhi double-spaced, Karnataka I-omission, etc.), the advocate may supply a `<case-folder>/reference.docx` override. **The Drafter MUST use either the shipped or the override — never auto-generate a fresh one in the case folder (that produces the v0.1.0 render defects).**
+- **Pandoc invocation:**
+  ```bash
+  pandoc draft-v1.md -o draft-v1.docx \
+    --reference-doc="<shipped or override reference.docx>" \
+    --from=markdown+pipe_tables+raw_tex
+  ```
 - **Output filename convention:** `<case-type>_<draft-version>_<YYYY-MM-DD>.docx`
 - **NEVER overwrite an existing draft.** Each run produces a new versioned file.
+
+## PIPELINE-OPTIONALITY (load-bearing — advocate-cost discipline)
+
+The full 6-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) is **NOT** mandatory. As of v0.2.0-alpha, only the first three stages are required to produce a filing-grade draft. The remaining three are OPTIONAL quality-control layers that the advocate explicitly invokes.
+
+```
+┌────────────────────────────────────────────────────────────┐
+│  REQUIRED PIPELINE (default exit point)                     │
+│  ─────────────────────────────────────────                  │
+│  Stage 1  Reader   →  case-facts.md   (extract & audit)     │
+│  Stage 2  Format   →  format-shell.md (bench-substitute)    │
+│  Stage 3  Drafter  →  draft-v1.docx   (filing-grade draft)  │
+│                                                             │
+│  ── default exit ──                                         │
+│                                                             │
+│  OPTIONAL QC PIPELINE (advocate opts in)                    │
+│  ─────────────────────────────────────────                  │
+│  Stage 4  Verifier  →  verification-report.md               │
+│  Stage 5  Refiner   →  draft-v2.docx                        │
+│  Stage 6  Overseer  →  final-draft.docx + opposing-notes.md │
+└────────────────────────────────────────────────────────────┘
+```
+
+**Why optional:** each stage is itself a Claude subagent run (~80–120K tokens). Running all six on every draft can exhaust an advocate's Claude session limit in a single drafting cycle. The QC stages are valuable for high-stakes matters but disproportionate for routine pleadings.
+
+**When to invoke the QC stages:**
+- Verifier: when the brief carries multiple precedent-PDFs and the advocate wants a paragraph-by-paragraph anti-hallucination check.
+- Refiner: when the Verifier flagged ≥3 critical issues, or when the advocate wants a polished v2 in a different bench's idiom.
+- Overseer: when the matter is materially adversarial (contested final hearing, not chamber motion) and the advocate wants an opposing-counsel pressure-test.
+
+**Default behaviour:** the Drafter signals "READY FOR REVIEW" after writing `draft-v1.docx` and STOPS. The advocate reads the draft and decides whether to invoke the QC stages. Do not auto-chain.
+
+## VERBOSITY DISCIPLINE (load-bearing — Verifier flags bloat)
+
+The Drafter writes formal Indian pleading register, not academic prose. Word-count budgets per case-type:
+
+| Case type | Main pleading target | Hard ceiling |
+|---|---|---|
+| Civil WP / Criminal WP / Section 482 / PIL / Contempt | 3,500–5,000 words | 6,500 |
+| First Appeal / Second Appeal / Criminal Appeal | 4,000–5,500 words | 7,500 |
+| Bail / Anticipatory Bail / Criminal Revision | 2,500–3,500 words | 4,500 |
+| MACT / MAT OA | 3,000–4,500 words | 6,000 |
+
+Compression rules:
+- **One paragraph per ground — not three.** A ground is a single legal proposition with one or two sentences of doctrinal anchor.
+- **Ceremonial phrases used sparingly** — "It is most respectfully submitted that…", "By reason of the matters aforesaid…", "In the premises aforesaid…" — these add register, not legal content. Use at most twice per pleading section.
+- **Synopsis Dates–Events table = 8–14 rows** — every dated event from `case-facts.md` chronology, deduplicated.
+- **Facts paragraphs = numbered, each fact = one paragraph.** No multi-fact paragraphs.
+- **If draft exceeds the ceiling, compress before signalling Verifier.** Bloated drafts are pleadings that lose the Court's attention — both a render defect and an advocate-quality defect.
+
+## MARKDOWN-HEADING DISCIPLINE (load-bearing — pandoc reference.docx contract)
+
+Pandoc converts the Drafter's Markdown to `.docx` using the shipped `reference.docx` at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`. The reference.docx has locked Word styles. For the styles to apply, the Drafter MUST use Markdown headings — not plain text — for the structural elements.
+
+See `_hc_pleading_base/SKILL.md` §MARKDOWN HEADING DISCIPLINE for the full convention table. Briefly:
+
+- `# Heading 1` for court header, case-number line, and cover-page anchors of INDEX / SYNOPSIS / LIST OF ANNEXURES.
+- `## Heading 2` for `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N`.
+- `### Heading 3` for ground sub-headers, prayer sub-clause anchors, and Accompanying Application titles.
+- Tables use pandoc pipe-table syntax with colon-anchored alignment row to control column widths.
+- Cover-page discipline: INDEX, SYNOPSIS, LIST OF ANNEXURES each begin on `\newpage` and carry ONLY court header + case-number + short cause-title + section header + table + counsel block. Full party block stays on the Main Petition cover only.
 
 ## RECOVERY / AUDIT
 
