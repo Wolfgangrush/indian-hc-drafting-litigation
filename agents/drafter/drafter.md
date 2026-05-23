@@ -31,11 +31,14 @@ Compose the actual draft pleading as a complete `.docx` file. Single output file
 
 1. **Read** `case-facts.md` + `format-shell.md` + the case-type skill + `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/SKILL.md` (Markdown-heading discipline) + `${CLAUDE_PLUGIN_ROOT}/skills/_drafting_common/SKILL.md` (verbosity discipline).
 
-2. **Markdown-heading discipline (LOAD-BEARING — every Drafter output must obey).** Pandoc maps Markdown headings to Word styles in the shipped `reference.docx`. The Drafter MUST use:
-   - `# Heading 1` — for the Court header line, the case-number line, and the cover-page anchors of INDEX / SYNOPSIS / LIST OF ANNEXURES.
-   - `## Heading 2` — for `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N`.
-   - `### Heading 3` — for ground sub-headers, prayer sub-clause anchors, and Accompanying Application titles.
+2. **Markdown-heading discipline (LOAD-BEARING — every Drafter output must obey).** Pandoc maps Markdown headings to the locked Word styles in the shipped `reference.docx` — these styles match the filing-grade Bombay HC Nagpur convention (extracted from an actual filed Second Appeal pleading). The Drafter MUST use:
+   - `# Heading 1` — TNR 14pt **bold + centered** (NOT underlined) — Court header line; case-number line.
+   - `## Heading 2` — TNR 14pt **bold + UNDERLINED + centered + letter-spacing** — for spaced section headers: `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N`.
+   - `### Heading 3` — TNR 14pt **bold + UNDERLINED + centered** — for unspaced section headers + statutory opening: `### SUBSTANTIAL QUESTIONS OF LAW`, `### ACTS & RULES`, `### CITATIONS`, `### WRIT PETITION UNDER ARTICLE 226 READ WITH ARTICLE 227 OF THE CONSTITUTION OF INDIA`.
+   - `#### Heading 4` — TNR 14pt **bold + UNDERLINED + left** — for `#### MOST RESPECTFULLY SHEWETH:` style anchors.
    - Plain body paragraphs — for everything else.
+   - Numbered paragraphs (Facts and Grounds) use **bold numbers**: `**1.**`, `**2.**`, `**3.**` — pandoc + reference.docx renders this as the gold-standard pleading layout.
+   - Inline **bold** highlighting for property descriptors, annexure markers, and key terms within Facts narrative.
    - Plain text `F A C T S` written as a body paragraph WILL render as left-aligned body text (the failure mode of v0.1.0). Always use the `##` heading prefix.
 
 3. **Compose Main Pleading** (every section rendered in the user's HC bench's idiom per `bench-config.md` values already substituted by Format):
@@ -93,13 +96,18 @@ Compose the actual draft pleading as a complete `.docx` file. Single output file
 
 11. **Write `draft-v1.md`** as markdown, observing the heading discipline above.
 
-12. **Convert to `draft-v1.docx` via pandoc using the SHIPPED reference template.** Do NOT generate a fresh reference.docx in the case folder — that produces the v0.1.0 render defects (title not bold, FACTS left-aligned, etc.). Use the shipped one:
+12. **Convert to `draft-v1.docx` via pandoc using the SHIPPED reference template, then run the table-width fix script.** Two-step process — the second step is NON-NEGOTIABLE; pandoc pipe-tables do not reliably honour `tblLayout=fixed` for column widths, and skipping the fix script produces the v0.2.0 Index-table defect (Sr.No / Annx columns stacking vertically). Use the shipped reference.docx + the shipped fix script:
     ```bash
+    # Step 1 — pandoc → .docx with locked Word styles
     pandoc draft-v1.md -o draft-v1.docx \
       --reference-doc="${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx" \
       --from=markdown+pipe_tables+raw_tex
+
+    # Step 2 — force table column widths (Sr.No 8% / Annx 8% / Particulars 60% / Date 14% / Pgs 10%
+    # for 5-col tables; equivalent profiles for 4-col / 3-col / 2-col tables)
+    python3 "${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/fix_docx_tables.py" draft-v1.docx
     ```
-    If a bench requires a different reference.docx (e.g., Delhi HC double-spaced), the user may override via `<case-folder>/reference.docx`. Check for case-folder override first; otherwise use the shipped one.
+    If a bench requires a different reference.docx (e.g., Delhi HC double-spaced), the user may override via `<case-folder>/reference.docx`. Check for case-folder override first; otherwise use the shipped one. The fix script runs regardless.
 
 13. **Signal Verifier** (only if user has opted in to the full QC pipeline — see `_drafting_common/SKILL.md` §Pipeline-optionality).
 

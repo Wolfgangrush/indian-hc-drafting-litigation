@@ -67,32 +67,50 @@ For every case type, the final output is a SINGLE `.docx` file containing all se
 
 ## MARKDOWN HEADING DISCIPLINE (load-bearing — Drafter must follow)
 
-The Drafter writes Markdown. Pandoc converts the Markdown to `.docx` using the **`reference.docx` shipped at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`**, which has locked Word styles for Bombay HC Nagpur formatting (TNR 14pt, 1.5 spacing, 4cm left margin, A4, Heading 1 = bold centered, Heading 2 = bold centered with letter-spacing for the spaced `F A C T S` effect, Heading 3 = bold left for ground sub-headers).
+The Drafter writes Markdown. Pandoc converts the Markdown to `.docx` using the **`reference.docx` shipped at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`**, which has locked Word styles matching the **filing-grade Bombay HC Nagpur convention** (extracted from an actual filed Second Appeal pleading and validated by the author):
+
+- **Body (Normal)** — TNR 14pt, 1.5 line spacing, justified, 0.5cm first-line indent
+- **Heading 1** — TNR 14pt **bold + centered** (NOT underlined) — for the Court header line and the case-number line
+- **Heading 2** — TNR 14pt **bold + UNDERLINED + centered + letter-spacing** — for the spaced section headers (`F A C T S`, `G R O U N D S`, `P R A Y E R`, `I N D E X`, `S Y N O P S I S`, `L I S T   O F   A N N E X U R E S`)
+- **Heading 3** — TNR 14pt **bold + UNDERLINED + centered** — for the unspaced section headers (`SUBSTANTIAL QUESTIONS OF LAW`, `ACTS & RULES`, `CITATIONS`) and the statutory opening line (`SECOND APPEAL UNDER SECTION 100 CPC`, `WRIT PETITION UNDER ARTICLE 226 …`)
+- **Heading 4** — TNR 14pt **bold + UNDERLINED + left-aligned** — for `MOST RESPECTFULLY SHEWETH:` style left-margin anchors
+- **Tables** — `tblLayout = fixed`; first row bold centered; cell margins locked
 
 **For the styles to apply, the Drafter MUST use Markdown headings — not plain text — for the following structural elements:**
 
 | Markdown | Rendered as | Used for |
 |---|---|---|
-| `# Heading 1` | Bold centered TNR 14pt, page-anchor | Court header line; case-number line; INDEX cover; SYNOPSIS cover; LIST OF ANNEXURES cover |
-| `## Heading 2` | Bold centered with letter-spacing | Section headers — `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N` |
-| `### Heading 3` | Bold left TNR 14pt | Sub-section headers inside Grounds; Application titles inside Accompanying Applications block |
+| `# Heading 1` | Bold centered (no underline) | Court header line; case-number line |
+| `## Heading 2` | Bold centered UNDERLINED with letter-spacing | Spaced section headers: `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N` |
+| `### Heading 3` | Bold centered UNDERLINED | Unspaced section headers + statutory opening: `### SUBSTANTIAL QUESTIONS OF LAW`, `### ACTS & RULES`, `### CITATIONS`, `### WRIT PETITION UNDER ARTICLE 226 READ WITH ARTICLE 227 OF THE CONSTITUTION OF INDIA` |
+| `#### Heading 4` | Bold left UNDERLINED | Left-anchored bold-underlined headings: `#### MOST RESPECTFULLY SHEWETH:` |
 | Body paragraph | TNR 14pt justified, 1.5 spacing, 0.5cm first-line indent | Everything else |
+| `**Bold inline**` | Bold | Property descriptors / annexure markers / key terms inline within Facts narrative |
 
-**Tables (Index, List of Annexures, Synopsis Dates–Events) MUST use pandoc pipe tables with column widths controlled via the dashes-row width.** The reference.docx locks `tblLayout = fixed` so column widths are honoured. Recommended dashes-row widths for the standard Index/LoA table (proportions sum to 100):
-
+**Numbered paragraphs (Facts and Grounds) use BOLD numbers.** The Drafter writes:
+```markdown
+**1.**    It is most respectfully submitted that…
+**2.**    That the Petitioner…
 ```
-| Sr.No | Annx | Particulars                                        | Date | Pgs |
-|:-----:|:----:|:---------------------------------------------------|:----:|:---:|
-| 1.    |      | Synopsis                                           |      |  i  |
-| 2.    |      | [Appeal/Petition]                                  |      |  1  |
+(four-space tab after the bold number; pandoc + reference.docx renders this as the gold-standard pleading layout.)
+
+**Tables (Index, List of Annexures, Synopsis Dates–Events) — column widths are FORCED by a post-pandoc Python script.** Pandoc pipe-tables do NOT reliably honour the reference.docx's `tblLayout=fixed` for column widths; left to itself, pandoc apportions widths from the column-header text length, which produces narrow stacking columns (the v0.2.0 Index-table defect). The Drafter MUST run the shipped `fix_docx_tables.py` post-pandoc:
+
+```bash
+pandoc draft-v1.md -o draft-v1.docx \
+  --reference-doc="${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx" \
+  --from=markdown+pipe_tables+raw_tex
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/fix_docx_tables.py" draft-v1.docx
 ```
 
-(Use the colons in the alignment row to enforce centered headers.)
+The fix script walks every table and forces the column-width profile that matches the table's column count (5-col = 8/8/60/14/10 percent for Sr.No/Annx/Particulars/Date/Pgs; 4-col = 10/10/65/15; 3-col = 10/75/15; 2-col = 18/82 for Synopsis Dates–Events). Also locks first-row bold + centered + vertically-centered cells. This is the only reliable path to filing-grade table rendering.
 
 **Cover-page discipline (NON-NEGOTIABLE — Verifier checks):**
-- INDEX, SYNOPSIS, and LIST OF ANNEXURES each begin on a new page.
+- INDEX, SYNOPSIS, and LIST OF ANNEXURES each begin on a new page (`\newpage` in Markdown).
 - Each cover page carries ONLY: court header (`#`) + case-number line (`#`) + short cause-title (Petitioner short name `///VERSUS///` Respondent short name) + the section header (`##`) + the table.
 - DO NOT repeat the full Petitioner/Respondent address block on cover pages. Full party block appears only on the Main Petition cover.
+
+**Counsel block alignment:** the closing `NAGPUR / DATE / COUNSEL FOR THE PETITIONER` block is right-aligned. Write it in Markdown as a paragraph with the `right` attribute or use a 2-column layout via a pipe table with the right column carrying the counsel block.
 
 ## ① MAIN PLEADING — UNIVERSAL TEMPLATE (bench-config-substituted; Markdown-heading-disciplined)
 

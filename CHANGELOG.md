@@ -14,6 +14,37 @@ All notable changes to this plugin are documented here. Versioning follows [Sema
 
 ---
 
+## [0.2.1-alpha] — 2026-05-24
+
+### Filing-grade format calibration (against an actual filed Bombay HC Nagpur Second Appeal pleading)
+
+The v0.2.0 render path produced bold-centered section headers but missed three filing-grade conventions visible in an actual filed pleading supplied by the author. v0.2.1 calibrates the reference.docx + Drafter prompts to match the gold standard precisely.
+
+### Added
+
+- **`fix_docx_tables.py`** — post-pandoc Python script that forces column widths on every table in the rendered .docx. Pandoc pipe-tables do NOT honour `tblLayout=fixed` from the reference.docx and apportion widths from column-header text length — which produces narrow stacking columns (the v0.2.0 Index-table defect where Sr.No / Annx columns stacked vertically). The fix script applies these profiles:
+  - 5-col (Sr.No / Annx / Particulars / Date / Pgs) → 8% / 8% / 60% / 14% / 10%
+  - 4-col → 10% / 10% / 65% / 15%
+  - 3-col → 10% / 75% / 15%
+  - 2-col (Synopsis Dates–Events) → 18% / 82%
+  Also locks first-row bold + centered + vertically-centered cells across all tables. Drafter runs this script as the final post-pandoc step.
+- **Heading 3 + Heading 4 styles** in reference.docx — for unspaced bold-underlined section headers (SUBSTANTIAL QUESTIONS OF LAW / ACTS & RULES / CITATIONS / statutory opening) and left-anchored bold-underlined headings (MOST RESPECTFULLY SHEWETH:).
+- **Page numbers at TOP CENTER** (Bombay HC Nagpur convention per the filed pleading; was bottom-center in v0.2.0).
+- **Bold-number Markdown convention** documented in Drafter prompt — Facts and Grounds paragraphs use `**1.**`, `**2.**`, `**3.**` to render the gold-standard pleading layout.
+
+### Changed
+
+- **Heading 2 in reference.docx** — now adds UNDERLINE to the bold + centered + letter-spacing combination. F A C T S / G R O U N D S / P R A Y E R / I N D E X etc. are now rendered as bold + UNDERLINED + centered + letter-spaced, matching the filed-pleading convention.
+- **Drafter pandoc command** now has TWO steps (pandoc → .docx, then `fix_docx_tables.py`). The fix script is non-negotiable; skipping it reproduces the v0.2.0 Index-table defect.
+- **_hc_pleading_base/SKILL.md** heading-discipline table updated to document the mixed convention (spaced bold-underlined Heading 2 for F A C T S etc.; unspaced bold-underlined Heading 3 for SUBSTANTIAL QUESTIONS OF LAW / ACTS & RULES; bold-underlined-left Heading 4 for MOST RESPECTFULLY SHEWETH:).
+- Inline-bold highlighting convention documented — Drafter wraps property descriptors / annexure markers / key terms in `**…**` within Facts narrative.
+
+### Source of the calibration
+
+The v0.2.1 calibration is anchored to a representative pleading: a Second Appeal under Section 100 CPC before the Bombay High Court Nagpur Bench in Stamp No.____/2026 (a representative party v. State of Maharashtra). The structural conventions extracted are the filing-grade gold standard for Bombay HC Nagpur and propagate across all 4 active Wolfgang Rush drafting plugins.
+
+---
+
 ## [0.2.0-alpha] — 2026-05-24
 
 ### Critical render-defect repair (from the 2026-05-24 EPFO test run)
