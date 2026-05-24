@@ -138,3 +138,18 @@ When `draft-v1.docx` is written, the Drafter's job is complete. The downstream V
 If the advocate invokes the QC pipeline, the Verifier reads `draft-v1.md` (the Markdown master) and compares fact-by-fact against `case-facts.md`. The Refiner then applies the Verifier's flags and produces `draft-v2.docx` using the same shipped reference.docx. The Overseer reads `draft-v2` with an opposing-counsel lens and produces `final-draft.docx` + `opposing-notes.md`.
 
 Each QC stage is OPTIONAL — none is mandatory before filing. Track this when estimating advocate token-budget for a draft.
+
+
+---
+
+## v0.2.3 EXPLICIT OUTPUT-PAIRING (load-bearing — Drafter MUST run after every `.md` write)
+
+After writing **draft-v1** to the case folder, the Drafter MUST immediately invoke the shipped output-pairing helper on each `.md` artifact to produce a paired `.docx`:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/pair_md_to_docx.sh" <case-folder>/draft-v1.md
+```
+
+The helper performs the two-step pandoc + `fix_docx_tables.py` pipeline using the shipped `reference.docx` at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx` and writes the paired `.docx` alongside the `.md`. The advocate then has both formats — `.md` for diffing / version control / downstream agent input, `.docx` for opening in Word.
+
+**Hard rule:** the Drafter does NOT signal the next stage of the pipeline until every `.md` it has written carries a paired `.docx`. The Verifier (or the human reviewer) checks for this pairing and flags any orphan `.md`. (Documented as v0.2.2 OUTPUT-PAIRING DISCIPLINE in `_drafting_common/SKILL.md`; v0.2.3 makes the invocation explicit in this agent's prompt so the rule survives any failure of inherited-rule compliance.)
