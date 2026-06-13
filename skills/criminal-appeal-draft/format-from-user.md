@@ -11,7 +11,7 @@ an earlier draft of this format was an earlier example showing how facts shape t
 ## ① MAIN APPEAL — exact format pattern
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 CRIMINAL APPEAL NO._______/<YEAR>
 
@@ -119,7 +119,7 @@ b.
 Grant any other relief deems fit just and proper in the facts and circumstances of the case in favour of the appellant.
 
 
-NAGPUR		                   (<COUNSEL NAME>, Adv.)
+[PLACE]		                   (<COUNSEL NAME>, Adv.)
 DATE:   .__.<YEAR>                      COUNSEL FOR APPELLANT
 
 
@@ -138,7 +138,7 @@ Notes on Limitation:
 ## ② INDEX — the master Criminal Appeal format
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 CRIMINAL APPEAL NO._______/<YEAR>
 
@@ -159,14 +159,14 @@ I N D E X
 | 6.    | B (Colly)| Copy of deposition of all <N> witnesses.                   |      |     |
 
 
-NAGPUR		                   (<COUNSEL NAME>, Adv.)
+[PLACE]		                   (<COUNSEL NAME>, Adv.)
 DATE:   .__.<YEAR>                      COUNSEL FOR APPELLANT
 ```
 
 ## ③ SYNOPSIS — the master Criminal Appeal format
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 CRIMINAL APPEAL NO._______/<YEAR>
 
@@ -209,7 +209,7 @@ CITATIONS:
 Will be cited at the time of hearing with the permission of this Hon'ble Court.
 
 
-NAGPUR.		     COUNSEL FOR APPELLANT
+[PLACE].		     COUNSEL FOR APPELLANT
 DATE:  /__/<YEAR>	     (<COUNSEL NAME>, Advocate)
 ```
 
@@ -276,7 +276,7 @@ b.
 Grant any other relief which this Hon'ble Court deems fit;
 
 
-NAGPUR		                   (<COUNSEL NAME>, Adv.)
+[PLACE]		                   (<COUNSEL NAME>, Adv.)
 DATE:   .__.<YEAR>                      COUNSEL FOR APPELLANT
 
 
@@ -320,7 +320,7 @@ b.
 Grant any other relief which this Hon'ble Court deems fit.
 
 
-NAGPUR		                   (<COUNSEL NAME>, Adv.)
+[PLACE]		                   (<COUNSEL NAME>, Adv.)
 DATE:   .__.<YEAR>                      COUNSEL FOR APPELLANT
 
 
@@ -341,7 +341,7 @@ Each section starts with cause title repeated. Page-break between sections.
 ## NOTES FOR DRAFTER
 
 - **Parties separator:** `...VERSUS…` (three dots, all caps "VERSUS", em-dash style). Master uses this style throughout.
-- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR." (period at end).
+- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]." (period at end).
 - **Counsel block:** counsel name in parens BEFORE "COUNSEL FOR APPELLANT" line.
 - **Operative Order Recital is repeated** in main appeal + Suspension app + Condonation app — copy verbatim across all three.
 - **Inline annexure markers:** ALWAYS bold-able and uppercase: ANNEXURE-A, ANNEXURE-B (Colly), etc.

@@ -1,6 +1,6 @@
 ---
 name: civil-wp-draft
-description: Draft a Civil Writ Petition before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Articles 226 / 227 of the Constitution of India. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur; other Indian HCs supported via bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`. Produces .docx containing Main Petition + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft civil wp" or "draft writ petition".
+description: Draft a Civil Writ Petition before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Articles 226 / 227 of the Constitution of India. Most-validated bench at v0.1.0-alpha is Bombay HC; other Indian HCs supported via bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`. Produces .docx containing Main Petition + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft civil wp" or "draft writ petition".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

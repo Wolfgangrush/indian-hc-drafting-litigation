@@ -1,6 +1,6 @@
 ---
 name: criminal-revision-draft
-description: Draft a Criminal Revision Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 442 BNSS / Sections 397 + 401 CrPC. Used to challenge non-interlocutory orders of subordinate criminal courts. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Application + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft revision" or "draft criminal revision" or "draft CRA".
+description: Draft a Criminal Revision Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 442 BNSS / Sections 397 + 401 CrPC. Used to challenge non-interlocutory orders of subordinate criminal courts. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Application + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft revision" or "draft criminal revision" or "draft CRA".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

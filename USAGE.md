@@ -48,9 +48,9 @@ Then open `bench-config.md` and fill in the values for your bench:
 - **Paper size, font, spacing, margins** per your bench's Registry direction
 - (Several other fields — see the template)
 
-If you practise at Bombay HC Nagpur, the template's default values already match your bench. Minimal edits needed.
+If you practise at Bombay HC, the template's default values already match your bench. Minimal edits needed.
 
-For other HCs, the template's default values are Bombay HC Nagpur — you'll need to replace each value with your bench's actual values. Pull from your bench's Practice Notes and Civil/Criminal Manual.
+For other HCs, the template's default values are Bombay HC — you'll need to replace each value with your bench's actual values. Pull from your bench's Practice Notes and Civil/Criminal Manual.
 
 You only do bench-config setup ONCE per Anthropic installation, then save a master copy for re-use across cases. The plugin reads `bench-config.md` from each case folder at run-time.
 
@@ -99,7 +99,7 @@ If you skip this step, the Drafter will fail-stop on the first invocation and re
 pil-draft                         # or civil-wp-draft / criminal-wp-draft / bail-draft / etc.
 
 ## Bench
-Bombay High Court, Nagpur Bench   # or per your bench-config
+Bombay High Court (the bench you specify)   # or per your bench-config
 
 ## Parties
 Petitioner: [Petitioner Name], [Age], [Occupation], R/o [Address]
@@ -222,7 +222,7 @@ Supply these via your `bench-config.md` per case folder, AND check your bench's 
 | Problem | Fix |
 |---|---|
 | Drafter halts with `STYLE.FAIL_STOP` | You haven't pasted style references into `format-from-user.md`. Open each file and paste your preferred style. |
-| Output Court header is "Bombay HC Nagpur" but I practise at a different HC | Your case folder's `bench-config.md` is either missing or contains the default Bombay values. Copy the template, fill in your bench's values, save in the case folder. |
+| Output Court header is "Bombay HC" but I practise at a different HC | Your case folder's `bench-config.md` is either missing or contains the default Bombay values. Copy the template, fill in your bench's values, save in the case folder. |
 | Reader halts with `Need PDF` | You've referenced a statute (e.g., HMA, MVA) whose PDF is not in your case folder's `laws/` subfolder. Add the PDF. |
 | Annexure markers come out as `ANNEXURE-A` but my HC uses different convention | Update `bench-config.md` Section 6 (annexure-prefix) to your bench's convention. |
 | Many `[CITATION NEEDED]` placeholders in the output | The plugin won't generate citations from memory. Add the citations you intend to rely on to `citations.md`, then re-run; OR accept the placeholders and fill them manually post-draft. |

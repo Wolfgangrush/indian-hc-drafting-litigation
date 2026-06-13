@@ -1,6 +1,6 @@
 ---
 name: application-482-draft
-description: Draft an Application under Section 482 CrPC / Section 528 BNSS (inherent jurisdiction of any Indian High Court — typically used for quashing FIR / proceedings; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft 482" or "draft quashing" or "draft 528 BNSS".
+description: Draft an Application under Section 482 CrPC / Section 528 BNSS (inherent jurisdiction of any Indian High Court — typically used for quashing FIR / proceedings; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft 482" or "draft quashing" or "draft 528 BNSS".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

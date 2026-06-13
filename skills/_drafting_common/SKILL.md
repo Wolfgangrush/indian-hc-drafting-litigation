@@ -18,7 +18,7 @@ The plugin's core design principle: a uniform structural skeleton across Indian 
 
 3. **Per-case CLAUDE.md is OPT-IN, self-contained.** No external imports. Case context only — parties, court, judge, key dates, counsel's role.
 
-4. **Bench-config is mandatory.** Every case folder must contain a `bench-config.md` identifying the user's HC bench and specifying the bench-specific values. The Reader agent halts the pipeline if `bench-config.md` is absent or has unfilled placeholders. **The plugin does NOT default to any specific HC's conventions.** Bombay HC Nagpur values are the author's most-validated exemplar but they are NOT the universal default.
+4. **Bench-config is mandatory.** Every case folder must contain a `bench-config.md` identifying the user's HC bench and specifying the bench-specific values. The Reader agent halts the pipeline if `bench-config.md` is absent or has unfilled placeholders. **The plugin does NOT default to any specific HC's conventions.** Bombay HC values are the author's most-validated exemplar but they are NOT the universal default.
 
 5. **🔴 LAYER 2 IS APPEND-ONLY FROM SKILL/AGENT SIDE.**
    - Skills/agents may: READ existing files in case folder, WRITE new draft files (case-facts.md, format-shell.md, draft-v*.docx, etc.), EDIT files they themselves created in this session
@@ -49,10 +49,10 @@ Per-HC bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`
 
 | HC | Court header (illustrative — verify against the bench's current Practice Notes) | Annexure prefix | Notable difference |
 |---|---|---|---|
-| Bombay HC Nagpur | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.` (period at end) | `ANNEXURE-` | `///VERSUS///` separator · spaced section heads (`F A C T S`) · 1.5 line spacing |
-| Bombay HC Principal (Mumbai) | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY.` | `ANNEXURE-` | similar to Nagpur with bench-specific Practice Notes |
-| Bombay HC Aurangabad | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT AURANGABAD.` | `ANNEXURE-` | similar to Nagpur |
-| Bombay HC Goa | `IN THE HIGH COURT OF BOMBAY AT GOA.` | `ANNEXURE-` | similar to Nagpur with Goa-specific overlay |
+| Bombay HC | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].` (period at end) | `ANNEXURE-` | `///VERSUS///` separator · spaced section heads (`F A C T S`) · 1.5 line spacing |
+| Bombay HC Principal (Mumbai) | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY.` | `ANNEXURE-` | similar to [bench city] with bench-specific Practice Notes |
+| Bombay HC Aurangabad | `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT AURANGABAD.` | `ANNEXURE-` | similar to [bench city] |
+| Bombay HC Goa | `IN THE HIGH COURT OF BOMBAY AT GOA.` | `ANNEXURE-` | similar to [bench city] with Goa-specific overlay |
 | Delhi HC | `IN THE HIGH COURT OF DELHI AT NEW DELHI.` | `Annexure-` (some `P-1` style) | **A4 + DOUBLE spacing** + advocate name + enrolment + phone + email at foot of pleading (Delhi HC Original Side Rules 2018) |
 | Karnataka HC | `IN THE HIGH COURT OF KARNATAKA AT BANGALORE.` | `Annexure-` | **Letter `I` is OMITTED** from annexure marks (Karnataka HC Writ Proceedings Rules 1977 sequence: A, B, C, D, E, F, G, H, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z) |
 | Madras HC | `IN THE HIGH COURT OF JUDICATURE AT MADRAS.` | `Document No.` (often) / `Annexure-` (sometimes) | Original Side / Appellate Side distinct procedures (Madras HC OS Rules 1956 + AS Rules) |
@@ -79,7 +79,7 @@ Per-HC bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`
 | Tripura HC | `IN THE HIGH COURT OF TRIPURA AT AGARTALA.` | per Tripura HC Rules | post-2013 establishment |
 
 Validation depth taxonomy:
-- **Researched · awaiting Registry-acceptance validation:** Bombay (Nagpur, Principal, Aurangabad, Goa), Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, Patna, Orissa, Telangana, Andhra Pradesh — bench-config values sourced from each HC's official Rules + public practice texts; awaiting community Registry-acceptance validation.
+- **Researched · awaiting Registry-acceptance validation:** Bombay ([bench city], Principal, Aurangabad, Goa), Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, Patna, Orissa, Telangana, Andhra Pradesh — bench-config values sourced from each HC's official Rules + public practice texts; awaiting community Registry-acceptance validation.
 - **Stub · community contribution welcomed:** Gauhati, HP, J&K+Ladakh, Jharkhand, Chhattisgarh, MP, Uttarakhand, Manipur, Meghalaya, Sikkim, Tripura.
 
 ## ANNEXURE MECHANISM (bench-config-driven)
@@ -122,7 +122,7 @@ Each accompanying application repeats its own cause title (in the bench's idiom)
 ## OUTPUT FORMAT
 
 - **File type:** `.docx`
-- **Conversion tool:** pandoc (required) with the **shipped** `reference.docx` template at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`. The shipped reference has locked Word styles for Bombay HC Nagpur formatting (TNR 14pt, 1.5 line spacing, 4cm left margin, A4, Heading 1 = bold centered, Heading 2 = bold centered with letter-spacing). For benches requiring different formatting (Delhi double-spaced, Karnataka I-omission, etc.), the advocate may supply a `<case-folder>/reference.docx` override. **The Drafter MUST use either the shipped or the override — never auto-generate a fresh one in the case folder (that produces the v0.1.0 render defects).**
+- **Conversion tool:** pandoc (required) with the **shipped** `reference.docx` template at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`. The shipped reference has locked Word styles for Bombay HC formatting (TNR 14pt, 1.5 line spacing, 4cm left margin, A4, Heading 1 = bold centered, Heading 2 = bold centered with letter-spacing). For benches requiring different formatting (Delhi double-spaced, Karnataka I-omission, etc.), the advocate may supply a `<case-folder>/reference.docx` override. **The Drafter MUST use either the shipped or the override — never auto-generate a fresh one in the case folder (that produces the v0.1.0 render defects).**
 - **Pandoc invocation:**
   ```bash
   pandoc draft-v1.md -o draft-v1.docx \

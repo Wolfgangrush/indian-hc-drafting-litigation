@@ -1,6 +1,6 @@
 ---
 name: bail-draft
-description: Draft a Regular Bail Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 439 CrPC / Section 483 BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft bail" or "draft regular bail".
+description: Draft a Regular Bail Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 439 CrPC / Section 483 BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft bail" or "draft regular bail".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

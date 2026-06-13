@@ -11,7 +11,7 @@ HC taxonomy code: APL.
 ## ① MAIN APPLICATION — exact format pattern
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY NAGPUR BENCH, NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY [PLACE] BENCH, [PLACE]
 
 CRIMINAL APPLICATION (APL) NO. ___/ <YEAR>
 
@@ -118,14 +118,14 @@ e.
 Grant any other and further relief as this Hon'ble Court may deem fit and proper in the facts and circumstances of the case, in the interest of justice.
 
 
-NAGPUR DATED-__.__.<YEAR>
+[PLACE] DATED-__.__.<YEAR>
 COUNSEL FOR APPLICANTS
 ```
 
 ## ② INDEX
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY NAGPUR BENCH, NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY [PLACE] BENCH, [PLACE]
 
 CRIMINAL APPLICATION (APL) NO. ___/ <YEAR>
 
@@ -152,14 +152,14 @@ I N D E X
 | 7.    | Copy of written clarification                          | D         | <dt> |         |
 
 
-NAGPUR DATED-__.__.<YEAR>
+[PLACE] DATED-__.__.<YEAR>
 COUNSEL FOR APPLICANTS
 ```
 
 ## ③ SYNOPSIS
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY NAGPUR BENCH, NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY [PLACE] BENCH, [PLACE]
 
 CRIMINAL APPLICATION (APL) NO. ___/ <YEAR>
 
@@ -197,7 +197,7 @@ The Bharatiya Nyaya Sanhita, 2023.
 CITATIONS:
 Will be cited at the time of hearing with the permission of this Hon'ble Court.
 
-NAGPUR DATED-__.__.<YEAR>
+[PLACE] DATED-__.__.<YEAR>
 COUNSEL FOR APPLICANTS
 ```
 
@@ -224,7 +224,7 @@ LIST OF ANNEXURES
 
 - **Parties terminology:** APPLICANTS / NON-APPLICANTS (often plural — APL apps frequently have multiple applicants and multiple non-applicants).
 - **Parties separator:** `///VERSUS///` (uppercase, triple-slash).
-- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY NAGPUR BENCH, NAGPUR" — note "NAGPUR BENCH, NAGPUR" sequence (distinct from ABA's "NAGPUR BENCH NAGPUR" without comma, distinct from appeals' "BENCH AT NAGPUR").
+- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY [PLACE] BENCH, [PLACE]" — note "[PLACE] BENCH, [PLACE]" sequence (distinct from ABA's "[PLACE] BENCH [PLACE]" without comma, distinct from appeals' "BENCH AT [BENCH CITY]").
 - **Cause title parenthetical:** "In the matter of Section 528 of the Bharatiya Nagarik Suraksha Sanhita, 2023 r/w Section 482 of the Code of Criminal Procedure seeking quashing of <action>" — descriptive recital appears BEFORE party block (different from appeals where it follows case-no line).
 - **Statutory opening:** "APPLICATION UNDER SECTION 528 OF THE BHARATIYA NAGARIK SURAKSHA SANHITA, 2023 R/W SECTION 482 FOR QUASHING OF FIR" — S.528 BNSS = inherent powers (= S.482 CrPC).
 - **Salutation:** "The Applicants most humbly and respectfully submit as under-"
@@ -243,7 +243,7 @@ LIST OF ANNEXURES
   - (c) Direction against coercive action / arrest
   - (d) Ad-interim relief
   - (e) Catchall
-- **Counsel block** (the 482 APL master format — different from ABA): just "COUNSEL FOR APPLICANTS" line below NAGPUR DATED-__.__.<YEAR> — counsel name MISSING in master file. **Drafter MUST add counsel name in same line or below as per the user's convention.** Other formats (the ABA master format, the Civil WP master format) have counsel name explicitly. This master may be incomplete — flag to the user for verification.
+- **Counsel block** (the 482 APL master format — different from ABA): just "COUNSEL FOR APPLICANTS" line below [PLACE] DATED-__.__.<YEAR> — counsel name MISSING in master file. **Drafter MUST add counsel name in same line or below as per the user's convention.** Other formats (the ABA master format, the Civil WP master format) have counsel name explicitly. This master may be incomplete — flag to the user for verification.
 - **Inline annexure markers** common in APL: A=impugned FIR, B (Colly)=lawful-position documents (sale deeds, registers, etc.), C=counter-FIR (where applicable), D=prior representations/notices, E onward=additional supporting documents.
 - **Bhajan Lal citation IS approved for use** (verified case law — 1992 Supp (1) SCC 335). Drafter may cite this without the user supplying PDF.
 - **No "in jail" note** — APL applicants typically not in custody.

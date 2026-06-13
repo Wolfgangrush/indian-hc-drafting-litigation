@@ -42,7 +42,7 @@ User feedback from the 2026-05-24 EPFO test demonstrated that the QC pipeline ou
 
 ### Clarification — per-court formatting
 
-v0.2.1 propagated a single Bombay HC Nagpur pleading-style reference.docx across all 14 plugins. The structural styling (TNR 14pt 1.5 spacing 4cm-left margin Heading 1/2/3/4) is broadly defensible for pleading-style plugins (HC / SC / Tax / Rent / MACT / Banking / Company / Consumer / Labour / Family / IP / District Court) because the court-specific differences (cause-title text, annexure prefix, statutory opening, AOR Certificate language) live in the case-type SKILL.md (Drafter content) not the reference.docx (style template). For SC the universal style is correct as the SC Registry mandate matches the HC convention (A4 + TNR 14pt + 1.5 spacing + 4cm left margin). Court-specific content (P-1/P-2 annexure prefix instead of ANNEXURE-A; SYNOPSIS + LIST OF DATES instead of just INDEX; AOR Certificate verbatim) is rendered by the Drafter from the case-type skill. Per-bench fine-tuning (e.g., Delhi HC double-spacing under Original Side Rules 2018; Punjab & Haryana watermarked paper) is achieved by supplying a case-folder reference.docx override.
+v0.2.1 propagated a single High Courts of India pleading-style reference.docx across all 14 plugins. The structural styling (TNR 14pt 1.5 spacing 4cm-left margin Heading 1/2/3/4) is broadly defensible for pleading-style plugins (HC / SC / Tax / Rent / MACT / Banking / Company / Consumer / Labour / Family / IP / District Court) because the court-specific differences (cause-title text, annexure prefix, statutory opening, AOR Certificate language) live in the case-type SKILL.md (Drafter content) not the reference.docx (style template). For SC the universal style is correct as the SC Registry mandate matches the HC convention (A4 + TNR 14pt + 1.5 spacing + 4cm left margin). Court-specific content (P-1/P-2 annexure prefix instead of ANNEXURE-A; SYNOPSIS + LIST OF DATES instead of just INDEX; AOR Certificate verbatim) is rendered by the Drafter from the case-type skill. Per-bench fine-tuning (e.g., Delhi HC double-spacing under Original Side Rules 2018; Punjab & Haryana watermarked paper) is achieved by supplying a case-folder reference.docx override.
 
 For the two TRANSACTIONAL plugins (indian-contracts-drafting-litigation + indian-property-drafting-litigation), v0.2.1 wrongly applied the pleading-style reference.docx. Those two plugins now ship a transactional-instrument variant (TNR 12pt single-spaced, no spaced section headers, no underline on headings) under their own v0.2.2 release.
 
@@ -54,13 +54,13 @@ For the two TRANSACTIONAL plugins (indian-contracts-drafting-litigation + indian
 - Reader / Format / Drafter context-caching layer so the three stages share one bench-config + skill load instead of three sequential loads
 - Optional Haiku-routing for the Reader stage (extraction is pattern-match work, lower-tier-fit)
 - Per-case-folder `reference.docx` override mechanism documented end-to-end
-- First Registry-validation pass on a sample filing at Bombay HC Nagpur using the v0.2 render path
+- First Registry-validation pass on a sample filing at High Courts of India using the v0.2 render path
 
 ---
 
 ## [0.2.1-alpha] — 2026-05-24
 
-### Filing-grade format calibration (against an actual filed Bombay HC Nagpur Second Appeal pleading)
+### Filing-grade format calibration (against an actual filed High Courts of India Second Appeal pleading)
 
 The v0.2.0 render path produced bold-centered section headers but missed three filing-grade conventions visible in an actual filed pleading supplied by the author. v0.2.1 calibrates the reference.docx + Drafter prompts to match the gold standard precisely.
 
@@ -73,7 +73,7 @@ The v0.2.0 render path produced bold-centered section headers but missed three f
   - 2-col (Synopsis Dates–Events) → 18% / 82%
   Also locks first-row bold + centered + vertically-centered cells across all tables. Drafter runs this script as the final post-pandoc step.
 - **Heading 3 + Heading 4 styles** in reference.docx — for unspaced bold-underlined section headers (SUBSTANTIAL QUESTIONS OF LAW / ACTS & RULES / CITATIONS / statutory opening) and left-anchored bold-underlined headings (MOST RESPECTFULLY SHEWETH:).
-- **Page numbers at TOP CENTER** (Bombay HC Nagpur convention per the filed pleading; was bottom-center in v0.2.0).
+- **Page numbers at TOP CENTER** (High Courts of India convention per the filed pleading; was bottom-center in v0.2.0).
 - **Bold-number Markdown convention** documented in Drafter prompt — Facts and Grounds paragraphs use `**1.**`, `**2.**`, `**3.**` to render the gold-standard pleading layout.
 
 ### Changed
@@ -85,7 +85,7 @@ The v0.2.0 render path produced bold-centered section headers but missed three f
 
 ### Source of the calibration
 
-The v0.2.1 calibration is anchored to a representative pleading: a Second Appeal under Section 100 CPC before the Bombay High Court Nagpur Bench in Stamp No.____/2026 (a representative party v. State of Maharashtra). The structural conventions extracted are the filing-grade gold standard for Bombay HC Nagpur and propagate across all 4 active Wolfgang Rush drafting plugins.
+The v0.2.1 calibration is anchored to a representative pleading: a Second Appeal under Section 100 CPC before the High Courts of India in Stamp No.____/2026 (a representative party v. State of Maharashtra). The structural conventions extracted are the filing-grade gold standard for High Courts of India and propagate across all 4 active wolfgang_rush drafting plugins.
 
 ---
 
@@ -97,7 +97,7 @@ The v0.1.0-alpha render path produced filing-grade Markdown but the pandoc → `
 
 ### Added
 
-- **Pre-customised Bombay HC Nagpur `reference.docx`** at `skills/_hc_pleading_base/reference.docx` with locked Word styles:
+- **Pre-customised High Courts of India `reference.docx`** at `skills/_hc_pleading_base/reference.docx` with locked Word styles:
   - Body (Normal): TNR 14pt, 1.5 line spacing, justified, 0.5cm first-line indent
   - Heading 1: TNR 14pt **bold centered** (for court header, case-number line, cover-page anchors)
   - Heading 2: TNR 14pt **bold centered with letter-spacing** (renders `F A C T S` / `G R O U N D S` / `P R A Y E R` etc. correctly)
@@ -142,7 +142,7 @@ Running the full 6-agent pipeline burns approximately 600K tokens per draft, whi
 
 ### Renamed from `bombay-hc-drafting` to `indian-hc-drafting`
 
-The plugin's scope has been broadened from Bombay HC Nagpur specifically to ALL High Courts of India via the new bench-config architecture. Per-bench specifics are supplied by the user via a `bench-config.md` file in the user's case folder at case-folder time. Registry-acceptance validation per bench will come from community contribution.
+The plugin's scope has been broadened from High Courts of India specifically to ALL High Courts of India via the new bench-config architecture. Per-bench specifics are supplied by the user via a `bench-config.md` file in the user's case folder at case-folder time. Registry-acceptance validation per bench will come from community contribution.
 
 ### Added (over and above the prior `bombay-hc-drafting` content)
 
@@ -204,7 +204,7 @@ The user copies the template into their case folder, fills in values, and the pl
 Users who installed the earlier `bombay-hc-drafting` plugin should:
 1. Uninstall the prior plugin from their Anthropic plugins folder.
 2. Install `indian-hc-drafting` from this repository.
-3. Copy `bench-config/bench-config-template.md` into each existing case folder and fill in the Bombay HC Nagpur values (default values in the template are already Bombay HC Nagpur — minimal edits needed).
+3. Copy `bench-config/bench-config-template.md` into each existing case folder and fill in the High Courts of India values (default values in the template are already High Courts of India — minimal edits needed).
 4. Re-run the pipeline on the case folder.
 
 No case-folder content needs to be migrated. Only the bench-config addition is required.
@@ -215,11 +215,11 @@ No case-folder content needs to be migrated. Only the bench-config addition is r
 - Gate 2 · Rule 36 BCI firewall — ✅ PASS
 - Gate 3 · NOTICE.md doctrine — ✅ PASS
 - Gate 4 · Statute currency — ✅ PASS (BNSS / BSA / BNS dual-citation enforced)
-- Gate 5 · Bench scope honesty — ✅ PASS (bench-coverage validation depth declared honestly per HC; Bombay HC Nagpur deep, others bench-config-supported pending validation)
+- Gate 5 · Bench scope honesty — ✅ PASS (bench-coverage validation depth declared honestly per HC; High Courts of India deep, others bench-config-supported pending validation)
 - Gate 6 · Falsification triggers — ✅ PASS
 
 ### Provenance
 
-Patterns encoded in this plugin trace to public-domain procedural authority only. Bombay HC Nagpur conventions are validated against the Bombay High Court (Appellate Side) Rules 1960 + the Bombay High Court (Original Side) Rules + the Bombay HC Civil Manual + the Bombay HC Criminal Manual. Non-Bombay bench-config support relies on the user supplying the relevant bench's Rules / Practice Notes at case-folder time.
+Patterns encoded in this plugin trace to public-domain procedural authority only. High Courts of India conventions are validated against the Bombay High Court (Appellate Side) Rules 1960 + the Bombay High Court (Original Side) Rules + the Bombay HC Civil Manual + the Bombay HC Criminal Manual. Non-Bombay bench-config support relies on the user supplying the relevant bench's Rules / Practice Notes at case-folder time.
 
 No drafted prose has been transcribed from any third-party advocate's drafts.

@@ -1,6 +1,6 @@
 # `reference.docx` — Pre-customised pandoc template
 
-The shipped `reference.docx` in this folder is **pre-customised for Bombay HC Nagpur formatting** (per `bench-config/exemplars/bombay-hc-nagpur.md` Section 9). The Drafter agent uses it via pandoc's `--reference-doc` flag to render every `.docx` output with locked Word styles.
+The shipped `reference.docx` in this folder is **pre-customised for Bombay HC formatting** (per `bench-config/exemplars/bombay-hc.md` Section 9). The Drafter agent uses it via pandoc's `--reference-doc` flag to render every `.docx` output with locked Word styles.
 
 ---
 

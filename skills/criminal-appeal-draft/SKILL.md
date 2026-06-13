@@ -1,6 +1,6 @@
 ---
 name: criminal-appeal-draft
-description: Draft a Criminal Appeal before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 374(2) CrPC + Section 415(2) BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx containing Main Appeal + Index + Synopsis + List of Annexures + Suspension of Sentence application + Condonation of Delay application (if late), rendered in the user's bench's idiom. Auto-fires on "draft criminal appeal" or "draft cri appeal".
+description: Draft a Criminal Appeal before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 374(2) CrPC + Section 415(2) BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx containing Main Appeal + Index + Synopsis + List of Annexures + Suspension of Sentence application + Condonation of Delay application (if late), rendered in the user's bench's idiom. Auto-fires on "draft criminal appeal" or "draft cri appeal".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

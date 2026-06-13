@@ -11,7 +11,7 @@ This is the SHARED structure that every Indian High Court pleading follows. The 
 **Bench-config-driven design:** the structural shape below is universal across Indian HCs. Specific Registry-facing values (Court header text, parties separator, section-header style, annexure prefix, counsel block) vary from bench to bench and are sourced from `<case-folder>/bench-config.md` at run-time. The Format agent substitutes the placeholders below from the user's bench-config; the Drafter renders the final pleading in the user's bench's idiom.
 
 → See `${CLAUDE_PLUGIN_ROOT}/skills/_drafting_common/SKILL.md` for the bench-config-driven rules and the bench-coverage research.
-→ See `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/` for bench-config exemplars per HC (Bombay-Nagpur, Bombay-Principal, Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, etc.).
+→ See `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/` for bench-config exemplars per HC (Bombay-[bench city], Bombay-Principal, Delhi, Karnataka, Madras, Calcutta, Allahabad, Punjab & Haryana, Gujarat, Kerala, Rajasthan, etc.).
 
 ## BENCH-CONFIG PLACEHOLDERS USED IN THIS SKELETON
 
@@ -26,7 +26,7 @@ Every `{{bench_config.X}}` placeholder below resolves to a value in the user's `
 | `{{bench_config.annexure_prefix}}` | `ANNEXURE-` (Bombay), `Annexure P/` (Punjab & Haryana, Orissa), `Annexure P-` (Rajasthan), `Exhibit` (Kerala default), `Document No.` (Madras OS), etc. |
 | `{{bench_config.annexure_letter_omissions}}` | `[]` (most HCs) or `["I"]` (Karnataka — letter I omitted) |
 | `{{bench_config.respondent_annexure_prefix}}` | `R/` (Punjab & Haryana) or none (most HCs) |
-| `{{bench_config.counsel_place}}` | `NAGPUR` (Nagpur Bench), `MUMBAI` (Principal Bench), `NEW DELHI` (Delhi), etc. |
+| `{{bench_config.counsel_place}}` | `[PLACE]` ([Your Bench]), `MUMBAI` (Principal Bench), `NEW DELHI` (Delhi), etc. |
 | `{{bench_config.advocate_block_template}}` | Bench's preferred Counsel/Advocate signature-block layout |
 | `{{bench_config.foot_of_pleading_requirements}}` | e.g., Delhi 2018: advocate name + enrolment + phone + email mandatory at foot |
 | `{{bench_config.paper_size}}` | `A4` (most) / `Legal` (some Original Side practices) |
@@ -67,7 +67,7 @@ For every case type, the final output is a SINGLE `.docx` file containing all se
 
 ## MARKDOWN HEADING DISCIPLINE (load-bearing — Drafter must follow)
 
-The Drafter writes Markdown. Pandoc converts the Markdown to `.docx` using the **`reference.docx` shipped at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`**, which has locked Word styles matching the **filing-grade Bombay HC Nagpur convention** (extracted from an actual filed Second Appeal pleading and validated by the author):
+The Drafter writes Markdown. Pandoc converts the Markdown to `.docx` using the **`reference.docx` shipped at `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/reference.docx`**, which has locked Word styles matching the **filing-grade Bombay HC convention** (extracted from an actual filed Second Appeal pleading and validated by the author):
 
 - **Body (Normal)** — TNR 14pt, 1.5 line spacing, justified, 0.5cm first-line indent
 - **Heading 1** — TNR 14pt **bold + centered** (NOT underlined) — for the Court header line and the case-number line
@@ -110,7 +110,7 @@ The fix script walks every table and forces the column-width profile that matche
 - Each cover page carries ONLY: court header (`#`) + case-number line (`#`) + short cause-title (Petitioner short name `///VERSUS///` Respondent short name) + the section header (`##`) + the table.
 - DO NOT repeat the full Petitioner/Respondent address block on cover pages. Full party block appears only on the Main Petition cover.
 
-**Counsel block alignment:** the closing `NAGPUR / DATE / COUNSEL FOR THE PETITIONER` block is right-aligned. Write it in Markdown as a paragraph with the `right` attribute or use a 2-column layout via a pipe table with the right column carrying the counsel block.
+**Counsel block alignment:** the closing `[PLACE] / DATE / COUNSEL FOR THE PETITIONER` block is right-aligned. Write it in Markdown as a paragraph with the `right` attribute or use a 2-column layout via a pipe table with the right column carrying the counsel block.
 
 ## ① MAIN PLEADING — UNIVERSAL TEMPLATE (bench-config-substituted; Markdown-heading-disciplined)
 
@@ -333,7 +333,7 @@ Validated bench-config exemplars in `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplar
 
 | Exemplar | Validation depth | Source |
 |---|---|---|
-| `bombay-hc-nagpur.md` | Researched · awaiting Registry validation | Bombay HC AS Rules 1960, Nagpur Bench Practice Notes |
+| `bombay-hc.md` | Researched · awaiting Registry validation | Bombay HC AS Rules 1960, Bombay HC bench Practice Notes |
 | `bombay-hc-principal-mumbai.md` | Bench-config supported | Bombay HC AS + OS Rules, Principal-Bench Practice Notes |
 | `bombay-hc-aurangabad.md` | Bench-config supported | Bombay HC AS Rules + Aurangabad Bench Practice |
 | `bombay-hc-goa.md` | Bench-config supported | Bombay HC AS Rules + Goa Bench Practice |

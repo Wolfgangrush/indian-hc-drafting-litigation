@@ -14,7 +14,7 @@ This plugin contains the following categories of content, and **only** the follo
 
 (a) **Procedural skeletons** — the structural shape of pleadings prescribed by Indian procedural law (cause title, party block, statutory opening, prelude, facts section header, grounds section header, prayer, verification, counsel block, index, synopsis, list of annexures, accompanying applications).
 
-(b) **Formatting conventions** — Registry-compliant text-formatting conventions of Indian High Courts — heading style, parties separator, salutation phrasing, annexure marker conventions, prayer-opening conventions, counsel block layout, paper size and font conventions, page numbering conventions for annexures. The default values shipped in the plugin reflect Bombay HC Nagpur conventions sourced from the public Bombay HC Appellate-Side Rules 1960, Civil Manual, Criminal Manual and Practice Notes; bench-specific values for other High Courts are supplied by the user via the `bench-config.md` file in the user's case folder.
+(b) **Formatting conventions** — Registry-compliant text-formatting conventions of Indian High Courts — heading style, parties separator, salutation phrasing, annexure marker conventions, prayer-opening conventions, counsel block layout, paper size and font conventions, page numbering conventions for annexures. The default values shipped in the plugin reflect High Courts of India conventions sourced from the public Bombay HC Appellate-Side Rules 1960, Civil Manual, Criminal Manual and Practice Notes; bench-specific values for other High Courts are supplied by the user via the `bench-config.md` file in the user's case folder.
 
 (c) **Statutory references** — citations to public statutes (Constitution of India, Code of Civil Procedure 1908, Code of Criminal Procedure 1973, Bharatiya Nagarik Suraksha Sanhita 2023, Indian Evidence Act 1872, Bharatiya Sakshya Adhiniyam 2023, Motor Vehicles Act 1988, Hindu Marriage Act 1955, Special Marriage Act 1954, Family Courts Act 1984, Contempt of Courts Act 1971, Limitation Act 1963, and other public enactments).
 
@@ -68,7 +68,7 @@ The plugin is, in this respect, identical in legal character to a published draf
 
 ## 4. The author's professional position
 
-The author is **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the Bombay High Court, Nagpur Bench. The plugin is published under the open-source brand **Wolfgang Rush**, which is the author's publishing handle for legal-technology infrastructure; the real-identity accountability declared in this section attaches to the author personally and is not displaced by the use of a publishing handle.
+The author is **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the High Courts of India. The plugin is published under the open-source brand **wolfgang_rush**, which is the author's publishing handle for legal-technology infrastructure; the real-identity accountability declared in this section attaches to the author personally and is not displaced by the use of a publishing handle.
 
 The author retains full enrollment, full responsibility, and full liability under the Advocates Act 1961, the Bar Council of India Rules, the Bombay High Court Rules, and the Standards of Professional Conduct and Etiquette.
 

@@ -10,12 +10,12 @@
 >
 > This software generates assistive drafts and suggestions only. Every legal claim, citation, statute reference, procedural step, deadline calculation, and ground of relief must be independently verified by a qualified human practitioner before filing, advising a client, or relying on the output. The publisher accepts no liability for outputs used without verification.
 
-> 🛡️ **Privacy primitive — Reader agent invokes the gateway:** This drafting plugin's **Reader agent** (the first agent in the 6-agent pipeline) calls [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT · Wolfgang Rush) on the user's case folder BEFORE any cloud-LLM call. Real client names · government IDs · case numbers · phone numbers · currency amounts are replaced with placeholders (`[PERSON_1]` · `[AADHAAR_1]` · `[CASE_NO_1]` · etc.) in a session-scoped in-memory token map that never touches disk. Downstream agents (Format · Drafter · Verifier · Refiner) work entirely on the sanitized text. The **Overseer agent** (the final agent) calls `desanitize()` to restore real values in the final pleading before it reaches the file system. Cloud LLM vendors never see your client's real PII.
+> 🛡️ **Privacy primitive — Reader agent invokes the gateway:** This drafting plugin's **Reader agent** (the first agent in the 6-agent pipeline) calls [pseudonymisation-gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) (MIT · wolfgang_rush) on the user's case folder BEFORE any cloud-LLM call. Real client names · government IDs · case numbers · phone numbers · currency amounts are replaced with placeholders (`[PERSON_1]` · `[AADHAAR_1]` · `[CASE_NO_1]` · etc.) in a session-scoped in-memory token map that never touches disk. Downstream agents (Format · Drafter · Verifier · Refiner) work entirely on the sanitized text. The **Overseer agent** (the final agent) calls `desanitize()` to restore real values in the final pleading before it reaches the file system. Cloud LLM vendors never see your client's real PII.
 
 
-## 🚀 Install — Wolfgang Rush marketplace
+## 🚀 Install — wolfgang_rush marketplace
 
-This plugin is part of the [Wolfgang Rush plugin family](https://github.com/Wolfgangrush/wolfgang-rush-marketplace) — 14 Indian-court drafting plugins distributed via one Claude Code marketplace.
+This plugin is part of the [wolfgang_rush plugin family](https://github.com/Wolfgangrush/wolfgang-rush-marketplace) — 14 Indian-court drafting plugins distributed via one Claude Code marketplace.
 
 **Via Claude Code (CLI) — recommended for the plugin family:**
 
@@ -40,7 +40,7 @@ This plugin is part of the [Wolfgang Rush plugin family](https://github.com/Wolf
 6. [Your first pleading — step-by-step walkthrough](#your-first-pleading--step-by-step-walkthrough)
 7. [The `bench-config.md` file — how bench customisation works](#the-bench-configmd-file)
 8. [Why MIT License (and not Apache 2.0, GPL, or anything else)](#why-mit-license)
-9. [Sibling plugins (Wolfgang Rush legal-tech family)](#sibling-plugins)
+9. [Sibling plugins (wolfgang_rush legal-tech family)](#sibling-plugins)
 10. [Why this exists](#why-this-exists)
 11. [Roadmap](#roadmap)
 12. [Contributing](#contributing)
@@ -75,11 +75,11 @@ The output is what an advocate would file before an Indian High Court. **Not a t
 
 India has **twenty-five High Courts** under Article 214 and Article 231 of the Constitution. This plugin supports all of them through a bench-config architecture: the structural skeleton of any HC pleading is uniform (Cause Title → Parties → Statutory Opening → Prelude → Facts → Grounds → Prayer → Verification → Counsel block → Index → Synopsis → List of Annexures), and the bench-specific elements (Court header text, Appellate-Side / Original-Side Rules reference, annexure-marker convention, paper-size / font preference, section-headers style, prayer catchall) are supplied by the user via a `bench-config.md` file in the case folder.
 
-The plugin ships with **28 ready-to-copy bench-config exemplars** — one per High Court, plus three additional Bombay HC sub-benches (Principal Bench at Mumbai, Nagpur Bench, Aurangabad Bench, Goa Bench at Panaji).
+The plugin ships with **28 ready-to-copy bench-config exemplars** — one per High Court, plus three additional Bombay HC sub-benches (Principal Bench at Mumbai, [Your Bench], Aurangabad Bench, Goa Bench at Panaji).
 
 | # | High Court | Seat | Bench-config exemplar | Validation depth at v0.1.0-alpha |
 |---|---|---|---|---|
-| 1 | **Bombay High Court — Nagpur Bench** | Nagpur | `bench-config/exemplars/bombay-hc-nagpur.md` | bench-config supported · community Registry-validation welcomed |
+| 1 | **Bombay High Court — [Your Bench]** | [bench city] | `bench-config/exemplars/bombay-hc.md` | bench-config supported · community Registry-validation welcomed |
 | 2 | **Bombay High Court — Principal Bench (Mumbai)** | Mumbai | `bench-config/exemplars/bombay-hc-principal-mumbai.md` | bench-config supported · validation deepening v0.1.x |
 | 3 | **Bombay High Court — Aurangabad Bench** | Aurangabad | `bench-config/exemplars/bombay-hc-aurangabad.md` | bench-config supported · validation deepening v0.1.x |
 | 4 | **Bombay High Court — Goa Bench (Panaji)** | Panaji | `bench-config/exemplars/bombay-hc-goa.md` | bench-config supported · validation deepening v0.1.x |
@@ -393,7 +393,7 @@ Open `final-draft.docx` in Microsoft Word or LibreOffice. Read every paragraph. 
 The `bench-config.md` is how the plugin knows *which High Court* you are filing in. Every bench-specific value the Drafter needs lives in this file. A typical bench-config has fields like:
 
 ```yaml
-court_header: "IN THE HIGH COURT OF JUDICATURE AT BOMBAY, BENCH AT NAGPUR."
+court_header: "IN THE HIGH COURT OF JUDICATURE AT BOMBAY, BENCH AT [BENCH CITY]."
 parties_separator: "...Petitioner    Versus    ...Respondent"
 annexure_prefix: "ANNEXURE-A"          # ANNEXURE-A / Annexure P/1 / Exhibit A / etc.
 paper_size: "A4"
@@ -451,7 +451,7 @@ The MIT licence under which this plugin is released is compatible with:
 
 ## Sibling plugins
 
-This plugin is one in the **Wolfgang Rush** family of Indian legal-drafting plugins. All thirteen siblings ship under the same six-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) and the family-of-plugins doctrine — each plugin narrowly scoped to one practice area / forum:
+This plugin is one in the **wolfgang_rush** family of Indian legal-drafting plugins. All thirteen siblings ship under the same six-agent pipeline (Reader → Format → Drafter → Verifier → Refiner → Overseer) and the family-of-plugins doctrine — each plugin narrowly scoped to one practice area / forum:
 
 | Plugin | GitHub repo | Scope |
 |---|---|---|
@@ -525,9 +525,9 @@ This project does not have an email contact channel and does not accept private 
 
 ## Author and brand
 
-This plugin is authored by **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the Bombay High Court (Nagpur Bench).
+This plugin is authored by **Rushikesh R. Mahajan**, Advocate, enrolled with the Bar Council of Maharashtra and Goa, practising before the High Courts of India.
 
-The plugin is published under the **Wolfgang Rush** open-source brand — the author's publishing handle for legal-technology infrastructure. All commits to this repository are signed under the Wolfgang Rush GitHub identity. The real-identity declaration appears here, and again in `NOTICE.md`, so that the Bar Council Rule 36 accountability mechanism (advocate-as-individual responsibility) is preserved transparently rather than displaced by the publishing handle.
+The plugin is published under the **wolfgang_rush** open-source brand — the author's publishing handle for legal-technology infrastructure. All commits to this repository are signed under the wolfgang_rush GitHub identity. The real-identity declaration appears here, and again in `NOTICE.md`, so that the Bar Council Rule 36 accountability mechanism (advocate-as-individual responsibility) is preserved transparently rather than displaced by the publishing handle.
 
 ---
 
@@ -603,4 +603,4 @@ This plugin is **open-source infrastructure released free of cost** under the MI
 
 **MIT.** See [`LICENSE`](./LICENSE) for the full text.
 
-Copyright (c) 2026 Wolfgang Rush. Authored by Rushikesh R. Mahajan, Advocate, publishing under the Wolfgang Rush open-source brand.
+Copyright (c) 2026 Rushikesh R. Mahajan (publishing as wolfgang_rush). Authored by Rushikesh R. Mahajan, Advocate, publishing under the wolfgang_rush open-source brand.

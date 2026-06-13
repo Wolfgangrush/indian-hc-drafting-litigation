@@ -1,6 +1,6 @@
 ---
 name: pil-draft
-description: Draft a Public Interest Litigation before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md` — each HC has its own PIL Rules: Bombay HC PIL Rules 2010, Delhi HC PIL Rules 2010, Gauhati HC PIL Rules 2011, Gujarat HC PIL Rules, etc.) under Article 226 of the Constitution. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Petition + Index + Synopsis + List of Annexures + (optional) Stay/Interim Relief Application, rendered in the user's bench's idiom. Auto-fires on "draft PIL" or "draft public interest litigation".
+description: Draft a Public Interest Litigation before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md` — each HC has its own PIL Rules: Bombay HC PIL Rules 2010, Delhi HC PIL Rules 2010, Gauhati HC PIL Rules 2011, Gujarat HC PIL Rules, etc.) under Article 226 of the Constitution. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Petition + Index + Synopsis + List of Annexures + (optional) Stay/Interim Relief Application, rendered in the user's bench's idiom. Auto-fires on "draft PIL" or "draft public interest litigation".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
@@ -18,7 +18,7 @@ hc_taxonomy_match: PIL / CRPIL (criminal PIL)
 statutory_opening: |
   PUBLIC INTEREST LITIGATION UNDER ARTICLE 226 OF THE CONSTITUTION
   OF INDIA READ WITH RULES OF THE HON'BLE HIGH COURT OF JUDICATURE
-  AT BOMBAY (NAGPUR BENCH)
+  AT BOMBAY ([PLACE] BENCH)
 accompanying_applications:
   - stay_application          # where interim relief sought
   - direction_application     # where mandamus-style direction sought during pendency

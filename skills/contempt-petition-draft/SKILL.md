@@ -1,6 +1,6 @@
 ---
 name: contempt-petition-draft
-description: Draft a Contempt Petition before any Indian High Court (civil or criminal contempt under the Contempt of Courts Act, 1971; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Petition + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft contempt" or "draft contempt petition".
+description: Draft a Contempt Petition before any Indian High Court (civil or criminal contempt under the Contempt of Courts Act, 1971; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Petition + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft contempt" or "draft contempt petition".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
@@ -18,7 +18,7 @@ hc_taxonomy_match: CONP / CP
 statutory_opening: |
   CONTEMPT PETITION UNDER SECTIONS 11, 12, 14, 15 OF THE CONTEMPT OF
   COURTS ACT, 1971 READ WITH RULES OF THE HON'BLE HIGH COURT OF
-  JUDICATURE AT BOMBAY (NAGPUR BENCH)
+  JUDICATURE AT BOMBAY ([PLACE] BENCH)
   (For [civil / criminal] contempt — fill per case)
 accompanying_applications: []
 typical_annexure_order:

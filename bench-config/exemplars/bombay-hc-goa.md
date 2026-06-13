@@ -15,9 +15,9 @@ court_header_line: |
   IN THE HIGH COURT OF BOMBAY AT GOA.
 ```
 
-Note the format differs slightly from the Nagpur / Aurangabad Benches — Goa uses `AT GOA`, not `BENCH AT GOA`.
+Note the format differs slightly from the [bench city] / Aurangabad Benches — Goa uses `AT GOA`, not `BENCH AT GOA`.
 
-## Section 3-12 — Mirror Bombay HC Nagpur exemplar with overrides
+## Section 3-12 — Mirror Bombay HC exemplar with overrides
 
 ```yaml
 counsel_place: "PANAJI"                    # Counsel block uses Panaji (the seat of the Goa Bench)
@@ -26,4 +26,4 @@ state_court_fees_act_citation: |
   Schedule I, Article [N] of the Goa Court-Fees Act, 2002, as amended.
 ```
 
-All other values per `bombay-hc-nagpur.md`.
+All other values per `bombay-hc.md`.

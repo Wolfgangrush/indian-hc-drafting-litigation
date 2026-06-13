@@ -1,6 +1,6 @@
 ---
 name: mact-draft
-description: Draft a Motor Accidents Claims Tribunal (MACT) claim petition or a Writ Petition before any Indian High Court challenging a MACT award (under the Motor Vehicles Act 1988; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces a .docx with Main Petition + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft MACT", "draft motor accident claim", or "draft MACT writ petition".
+description: Draft a Motor Accidents Claims Tribunal (MACT) claim petition or a Writ Petition before any Indian High Court challenging a MACT award (under the Motor Vehicles Act 1988; bench-specific values sourced from `<case-folder>/bench-config.md`). Most-validated bench at v0.1.0-alpha is Bombay HC. Produces a .docx with Main Petition + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft MACT", "draft motor accident claim", or "draft MACT writ petition".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

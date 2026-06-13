@@ -10,10 +10,10 @@ This is a **template**. Copy this file into your case folder, rename to `bench-c
 
 ```yaml
 high_court: "Bombay High Court"          # or "Madras High Court" / "Calcutta High Court" / etc.
-bench: "Nagpur Bench"                    # or "Principal Bench (Mumbai)" / "Aurangabad Bench" / "Goa Bench" / N/A
+bench: "[Your Bench]"                    # or "Principal Bench (Mumbai)" / "Aurangabad Bench" / "Goa Bench" / N/A
 state: "Maharashtra"
 court_header_line: |
-  IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+  IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
                                           # Exact line as accepted by your Registry.
                                           # For Bombay Principal Bench: "IN THE HIGH COURT OF JUDICATURE AT BOMBAY."
                                           # For Madras HC: "IN THE HIGH COURT OF JUDICATURE AT MADRAS."
@@ -99,7 +99,7 @@ counsel_block_template: |
   [Place]                      ([NAME], Adv.)
   DATE:   .__.YYYY             COUNSEL FOR [APPELLANT/PETITIONER]
                                           # The exact layout varies per bench's Practice Note.
-                                          # Bombay HC Nagpur: as above.
+                                          # Bombay HC: as above.
                                           # Delhi HC: typically includes the advocate's enrolment number.
                                           # Madras HC: similar.
 counsel_for_designation_options:
@@ -181,7 +181,7 @@ state_court_fees_act_citation: |
 
 2. **Open `bench-config.md` in your editor** and replace every example value with your bench's actual values.
 
-3. **Verify each value against your bench's Practice Notes / Registry directions / Civil Manual.** If unsure, leave the default (which is the Bombay HC Nagpur value) and ask the Registry at filing.
+3. **Verify each value against your bench's Practice Notes / Registry directions / Civil Manual.** If unsure, leave the default (which is the Bombay HC value) and ask the Registry at filing.
 
 4. **Save the file inside your case folder.** The plugin's Format agent reads `<case-folder>/bench-config.md` at run-time.
 

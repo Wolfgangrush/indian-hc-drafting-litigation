@@ -10,7 +10,7 @@ This file is the authoritative format reference for `second-appeal-draft` skill.
 ## ① MAIN APPEAL — exact format pattern
 
 ```
-IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 SECOND APPEAL NO.                 /<YEAR>
 ACT CODE NO.                     .
@@ -128,7 +128,7 @@ f)
 Grant such other appropriate relief which this Hon'ble Court deems fit and proper in the facts and circumstances of the case.
 
 
-NAGPUR
+[PLACE]
 DATE:<DD.MM.YYYY>
 COUNSEL FOR APPELLANT
 (<COUNSEL NAME>)
@@ -137,7 +137,7 @@ COUNSEL FOR APPELLANT
 ## ② INDEX — exact format pattern
 
 ```
-IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 SECOND APPEAL NO.                 /<YEAR>
 ACT CODE. ________
@@ -159,7 +159,7 @@ I N D E X
 | 3.    | Copy of Judgment and Decree passed in <case>   | C    | <dt> |     |
 
 
-NAGPUR
+[PLACE]
 DATE:<DD.MM.YYYY>
 COUNSEL FOR APPELLANT
 (<COUNSEL NAME>)
@@ -168,7 +168,7 @@ COUNSEL FOR APPELLANT
 ## ③ SYNOPSIS — exact format pattern
 
 ```
-IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 SECOND APPEAL NO.                 /<YEAR>
 ACT CODE. ________
@@ -203,7 +203,7 @@ CITATIONS:
 Will be cited at the time of hearing with the permission of this Hon'ble Court.
 
 
-NAGPUR
+[PLACE]
 DATE:<DD.MM.YYYY>
 COUNSEL FOR APPELLANT
 (<COUNSEL NAME>)
@@ -212,7 +212,7 @@ COUNSEL FOR APPELLANT
 ## ④ LIST OF ANNEXURES — auto-built from inline markers
 
 ```
-IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+IN THIS HON'BLE COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 
 SECOND APPEAL NO.                 /<YEAR>
 ACT CODE. ________
@@ -232,7 +232,7 @@ LIST OF ANNEXURES
 | 3.    | Copy of <document>                            | C    | <dt> |     |
 
 
-NAGPUR
+[PLACE]
 DATE:<DD.MM.YYYY>
 COUNSEL FOR APPELLANT
 (<COUNSEL NAME>)

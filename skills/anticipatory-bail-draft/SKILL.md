@@ -1,6 +1,6 @@
 ---
 name: anticipatory-bail-draft
-description: Draft an Anticipatory Bail Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 438 CrPC / Section 482 BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur; other Indian HCs supported via bench-config exemplars (see `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`). Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft anticipatory bail" or "draft ABA" or "draft pre-arrest bail".
+description: Draft an Anticipatory Bail Application before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 438 CrPC / Section 482 BNSS. Most-validated bench at v0.1.0-alpha is Bombay HC; other Indian HCs supported via bench-config exemplars (see `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`). Produces .docx with Main Application + Index + Synopsis + List of Annexures, rendered in the user's bench's idiom. Auto-fires on "draft anticipatory bail" or "draft ABA" or "draft pre-arrest bail".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

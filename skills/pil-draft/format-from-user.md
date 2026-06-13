@@ -24,7 +24,7 @@ These are the ONLY differences in language/structure:
 WRIT PETITION (PIL) No.                 /<YEAR>
    OR
 PUBLIC INTEREST LITIGATION No.                 /<YEAR>
-   OR (HC Nagpur taxonomy match)
+   OR (HC [bench city] taxonomy match)
 PIL No.                 /<YEAR>
 ```
 
@@ -34,7 +34,7 @@ ACT CODE matches PIL/CRPIL per HC taxonomy.
 
 ```
 PUBLIC INTEREST LITIGATION UNDER ARTICLE 226 OF THE CONSTITUTION OF INDIA
-READ WITH RULES OF THE HON'BLE HIGH COURT OF JUDICATURE AT BOMBAY (NAGPUR BENCH)
+READ WITH RULES OF THE HON'BLE HIGH COURT OF JUDICATURE AT BOMBAY ([PLACE] BENCH)
 ```
 
 ### Parties terminology

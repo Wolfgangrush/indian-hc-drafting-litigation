@@ -1,6 +1,6 @@
 ---
 name: first-appeal-draft
-description: Draft a First Appeal (Civil) before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 96 CPC read with Order XLI CPC. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx containing Main Appeal + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft first appeal" or "draft FA".
+description: Draft a First Appeal (Civil) before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 96 CPC read with Order XLI CPC. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx containing Main Appeal + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft first appeal" or "draft FA".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

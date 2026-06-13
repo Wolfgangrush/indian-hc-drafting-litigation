@@ -1,7 +1,7 @@
-# bench-config — Bombay High Court, Nagpur Bench
+# bench-config — Bombay High Court (the bench you specify)
 
 **Validation depth:** Researched · awaiting Registry-acceptance validation.
-**Source authorities:** Bombay High Court (Appellate Side) Rules 1960; Bombay HC Nagpur Bench Practice Notes; Bombay HC Civil Manual; Bombay HC Criminal Manual.
+**Source authorities:** Bombay High Court (Appellate Side) Rules 1960; Bombay HC (your bench) Practice Notes; Bombay HC Civil Manual; Bombay HC Criminal Manual.
 
 ---
 
@@ -9,20 +9,20 @@
 
 ```yaml
 high_court: "Bombay High Court"
-bench: "Nagpur Bench"
+bench: "[Your Bench]"
 state: "Maharashtra"
 court_header_line: |
-  IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.
+  IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].
 ```
 
-Note the period at the end of the Court header — Bombay HC Nagpur convention.
+Note the period at the end of the Court header — Bombay HC convention.
 
 ## Section 2 — Procedural Rules
 
 ```yaml
 appellate_side_rules: |
   Bombay High Court (Appellate Side) Rules, 1960
-original_side_rules: ""                    # Not applicable for Nagpur Bench
+original_side_rules: ""                    # Not applicable for [Your Bench]
 pil_rules: |
   Bombay High Court Public Interest Litigation Rules, 2010
 ```
@@ -68,9 +68,9 @@ annexure_column_label: "Annx"
 ## Section 7 — Counsel block
 
 ```yaml
-counsel_place: "NAGPUR"
+counsel_place: "[PLACE]"
 counsel_block_template: |
-  NAGPUR                      ([NAME], Adv.)
+  [PLACE]                      ([NAME], Adv.)
   DATE:   .__.YYYY            COUNSEL FOR [APPELLANT/PETITIONER]
 foot_of_pleading_requirements:
   - "Counsel name"

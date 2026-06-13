@@ -1,6 +1,6 @@
 ---
 name: criminal-wp-draft
-description: Draft a Criminal Writ Petition before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Articles 226 / 227 of the Constitution. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx containing Main Petition + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft criminal wp" or "draft cri writ".
+description: Draft a Criminal Writ Petition before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Articles 226 / 227 of the Constitution. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx containing Main Petition + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft criminal wp" or "draft cri writ".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

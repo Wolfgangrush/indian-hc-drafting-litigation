@@ -1,6 +1,6 @@
 ---
 name: second-appeal-draft
-description: Draft a Second Appeal (Civil) before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 100 CPC. Substantial question of law is the gateway requirement. Most-validated bench at v0.1.0-alpha is Bombay HC Nagpur. Produces .docx with Main Appeal + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft second appeal" or "draft SA".
+description: Draft a Second Appeal (Civil) before any Indian High Court (bench-specific values sourced from `<case-folder>/bench-config.md`) under Section 100 CPC. Substantial question of law is the gateway requirement. Most-validated bench at v0.1.0-alpha is Bombay HC. Produces .docx with Main Appeal + Index + Synopsis + List of Annexures + (optional) Stay Application, rendered in the user's bench's idiom. Auto-fires on "draft second appeal" or "draft SA".
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 

@@ -15,7 +15,7 @@ court_header_line: |
   IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT AURANGABAD.
 ```
 
-## Section 3-12 — Mirror Bombay HC Nagpur exemplar
+## Section 3-12 — Mirror Bombay HC exemplar
 
 Override only:
 
@@ -23,4 +23,4 @@ Override only:
 counsel_place: "AURANGABAD"
 ```
 
-All other values per `bombay-hc-nagpur.md`. The Aurangabad Bench follows the same Appellate Side Rules + similar Practice Notes as the Nagpur Bench.
+All other values per `bombay-hc.md`. The Aurangabad Bench follows the same Appellate Side Rules + similar Practice Notes as the principal Bombay HC benches.

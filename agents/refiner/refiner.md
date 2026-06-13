@@ -40,7 +40,7 @@ Apply every Verifier flag. Polish language. Enforce the user's HC bench formatti
    - Ensure every paragraph in Facts and Grounds starts with consistent bullet/number convention.
    - Replace any remaining first-person references with third-person ("the Appellant," "the Petitioner").
 4. **Enforce the user's HC bench formatting** (sourced from `bench-config.md` — see exemplars at `${CLAUDE_PLUGIN_ROOT}/bench-config/exemplars/`):
-   - Court header: render exactly the `bench_config.court_header` value (e.g., `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR.` for Bombay-Nagpur, `IN THE HIGH COURT OF DELHI AT NEW DELHI.` for Delhi, `IN THE HIGH COURT OF KARNATAKA AT BANGALORE.` for Karnataka, etc.)
+   - Court header: render exactly the `bench_config.court_header` value (e.g., `IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY].` for Bombay-[bench city], `IN THE HIGH COURT OF DELHI AT NEW DELHI.` for Delhi, `IN THE HIGH COURT OF KARNATAKA AT BANGALORE.` for Karnataka, etc.)
    - Section heads: per `bench_config.section_headers_style` — spaced (`F A C T S`) for Bombay HC; Title Case bold (`Facts`) for most other HCs. Render accordingly.
    - Parties separator: per `bench_config.parties_separator` (`///VERSUS///` for Bombay; `...VERSUS...` for many other HCs).
    - Salutation, prayer opener, catchall, counsel block: all per `bench-config.md` values for the user's bench.

@@ -10,7 +10,7 @@ This file is the authoritative format reference for `criminal-revision-draft` sk
 ## ① MAIN APPLICATION — exact format pattern
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 Criminal Revision Application No.                 /<YEAR>
 ACT CODE -
@@ -91,7 +91,7 @@ d.
 Pass any such other and further orders as this Hon'ble Court may deem fit and proper in the facts and circumstances of the present case, to meet the ends of justice.
 
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
 COUNSEL FOR APPLICANT
 <COUNSEL NAME>
@@ -100,7 +100,7 @@ COUNSEL FOR APPLICANT
 ## ② INDEX
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 Criminal Revision Application No.                 /<YEAR>
 ACT CODE -
@@ -125,7 +125,7 @@ I N D E X
 | ...   | ...                                                      | C-I   | ...  |         |
 
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
 COUNSEL FOR APPLICANT
 <COUNSEL NAME>
@@ -134,7 +134,7 @@ COUNSEL FOR APPLICANT
 ## ③ SYNOPSIS
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 Criminal Revision Application No.                 /<YEAR>
 ACT CODE -
@@ -170,7 +170,7 @@ CITATIONS
 The Applicant will cite the case laws, if required, at the time of hearing.
 
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
 COUNSEL FOR APPLICANT
 <COUNSEL NAME>
@@ -201,7 +201,7 @@ Note: the master template orders Main → List → Synopsis → Index. Same as C
 
 - **Parties terminology:** APPLICANT / NON-APPLICANT (matches civil application style).
 - **Parties separator:** `///Versus///` (mixed case, triple-slash).
-- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR" (NO period — same as Civil WP, distinct from Cri Appeal which has period).
+- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]" (NO period — same as Civil WP, distinct from Cri Appeal which has period).
 - **Case type line:** "Criminal Revision Application No." — note Title Case (mixed), not all-caps. Distinct from "CRIMINAL APPEAL" all-caps style.
 - **Cause title parenthetical:** "(In the matter of challenge to the order dated <date> ...)" — appears BEFORE party block. Long descriptive recital.
 - **⚠️ STATUTORY OPENING TYPO ALERT:** master uses "BHARTIYA NYAYA SANHITA" but S.442 may belong to BNSS (Nagarik Suraksha Sanhita = procedural code) not BNS (Nyaya Sanhita = substantive). Verify with the user on first use. Possible alternatives:

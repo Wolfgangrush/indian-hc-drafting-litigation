@@ -31,7 +31,7 @@ Compose the actual draft pleading as a complete `.docx` file. Single output file
 
 1. **Read** `case-facts.md` + `format-shell.md` + the case-type skill + `${CLAUDE_PLUGIN_ROOT}/skills/_hc_pleading_base/SKILL.md` (Markdown-heading discipline) + `${CLAUDE_PLUGIN_ROOT}/skills/_drafting_common/SKILL.md` (verbosity discipline).
 
-2. **Markdown-heading discipline (LOAD-BEARING — every Drafter output must obey).** Pandoc maps Markdown headings to the locked Word styles in the shipped `reference.docx` — these styles match the filing-grade Bombay HC Nagpur convention (extracted from an actual filed Second Appeal pleading). The Drafter MUST use:
+2. **Markdown-heading discipline (LOAD-BEARING — every Drafter output must obey).** Pandoc maps Markdown headings to the locked Word styles in the shipped `reference.docx` — these styles match the filing-grade Bombay HC convention (extracted from an actual filed Second Appeal pleading). The Drafter MUST use:
    - `# Heading 1` — TNR 14pt **bold + centered** (NOT underlined) — Court header line; case-number line.
    - `## Heading 2` — TNR 14pt **bold + UNDERLINED + centered + letter-spacing** — for spaced section headers: `## F A C T S`, `## G R O U N D S`, `## P R A Y E R`, `## I N D E X`, `## S Y N O P S I S`, `## L I S T   O F   A N N E X U R E S`, `## V E R I F I C A T I O N`.
    - `### Heading 3` — TNR 14pt **bold + UNDERLINED + centered** — for unspaced section headers + statutory opening: `### SUBSTANTIAL QUESTIONS OF LAW`, `### ACTS & RULES`, `### CITATIONS`, `### WRIT PETITION UNDER ARTICLE 226 READ WITH ARTICLE 227 OF THE CONSTITUTION OF INDIA`.

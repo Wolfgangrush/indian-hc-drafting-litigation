@@ -10,7 +10,7 @@ This file is the authoritative format reference for `anticipatory-bail-draft` sk
 ## ① MAIN APPLICATION — exact format pattern
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY, NAGPUR BENCH NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY, [PLACE] BENCH [PLACE]
 
 CRIMINAL APPLICATION (ABA) No.             /<YEAR>
 
@@ -95,14 +95,14 @@ b)	ad-interim anticipatory bail in terms of prayer clause (a) may kindly be gran
 c)	grant any other relief which this Hon'ble Court deems fit just and proper, in the facts and circumstances of case.
 
 
-NAGPUR			             COUNSEL FOR APPLICANT
+[PLACE]			             COUNSEL FOR APPLICANT
 DATE:__/__/<YEAR>	                   (<COUNSEL NAME>, Adv.)
 ```
 
 ## ② INDEX
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY, NAGPUR BENCH NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY, [PLACE] BENCH [PLACE]
 
 CRIMINAL APPLICATION (ABA) No.             /<YEAR>
 
@@ -127,14 +127,14 @@ I N D E X
 | E     | Copy of impugned Order.                                              |      |     |
 
 
-NAGPUR			             COUNSEL FOR APPLICANT
+[PLACE]			             COUNSEL FOR APPLICANT
 DATE:__/__/<YEAR>	                   (<COUNSEL NAME>, Adv.)
 ```
 
 ## ③ SYNOPSIS
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY, NAGPUR BENCH NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY, [PLACE] BENCH [PLACE]
 
 CRIMINAL APPLICATION (ABA) No.             /<YEAR>
 
@@ -155,7 +155,7 @@ Dates           Chronological Events
 <date4>         That the learned District and Sessions Judge,<N> <D> rejected the bail application filed by the applicant. Being aggrieved by the rejection of the anticipatory bail application, the applicant is filing instant anticipatory bail application with connection to Crime No.<N>/<YEAR>.
 
 
-NAGPUR			             COUNSEL FOR APPLICANT
+[PLACE]			             COUNSEL FOR APPLICANT
 DATE:__/__/<YEAR>	                   (<COUNSEL NAME>, Adv.)
 ```
 
@@ -183,7 +183,7 @@ LIST OF ANNEXURES
 
 - **Parties terminology:** APPLICANT / NON-APPLICANT (not Petitioner/Respondent or Appellant).
 - **Parties separator:** `..VERSUS..` (in main app) and `..Versus..` (in Index/Synopsis/List). Two dots both sides, lowercase variant for sub-pages.
-- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY, NAGPUR BENCH NAGPUR" — note the comma + "NAGPUR BENCH NAGPUR" sequence (different from "BENCH AT NAGPUR" in appeals/WP).
+- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY, [PLACE] BENCH [PLACE]" — note the comma + "[PLACE] BENCH [PLACE]" sequence (different from "BENCH AT [BENCH CITY]" in appeals/WP).
 - **Statutory opening:** "APPLICATION UNDER SECTION 482 OF BHARATIYA NAGARIK SURAKSHA SANHITA, FOR GRANT OF ANTICIPATORY BAIL" (S.482 BNSS = anticipatory bail, equivalent to S.438 CrPC). Some practitioners cite both; preserve master's choice.
 - **Salutation:** "The applicant above named most humbly and respectfully beg to submits as under:-"
 - **NO separate FACTS / GROUNDS sections.** ABA runs as a continuous narrative without these headings — fact paragraphs and legal arguments interleaved. Distinct from main appeals/petitions.

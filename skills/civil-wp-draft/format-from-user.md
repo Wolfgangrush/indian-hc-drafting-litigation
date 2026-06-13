@@ -11,7 +11,7 @@ Also referenced by `pil-draft` per the user note (PIL format = Civil WP format).
 ## ① MAIN PETITION — exact format pattern
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 WRIT PETITION No.                 /<YEAR>
 ACT CODE -
@@ -122,7 +122,7 @@ e.
 Pass any such other and further orders as this Hon'ble Court may deem fit and proper in the facts and circumstances of the present case, to meet the ends of justice.
 
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
 COUNSEL FOR PETITIONER
 <COUNSEL NAME>
@@ -131,7 +131,7 @@ COUNSEL FOR PETITIONER
 ## ② INDEX
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 WRIT PETITION No.                 /<YEAR>
 ACT CODE -
@@ -154,7 +154,7 @@ I N D E X
 | 4.    | <particulars of A>                           | A     | <dt> |         |
 | ...   | ...                                          | B-N   | ...  |         |
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
 COUNSEL FOR PETITIONER
 <COUNSEL NAME>
@@ -163,7 +163,7 @@ COUNSEL FOR PETITIONER
 ## ③ SYNOPSIS
 
 ```
-IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR
+IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]
 
 WRIT PETITION No.                 /<YEAR>
 ACT CODE -
@@ -201,7 +201,7 @@ CITATIONS
 The PETITIONER will cite the case laws, if required, at the time of hearing.
 
 
-NAGPUR
+[PLACE]
 Dated-__/__/<YEAR>
      COUNSEL FOR PETITIONER
                                                             <COUNSEL NAME>
@@ -232,7 +232,7 @@ Note: master template orders Main → List → Synopsis → Index. Some chambers
 
 - **Parties terminology:** PETITIONER / RESPONDENT (not Appellant/Applicant).
 - **Parties separator:** `///VERSUS///` (uppercase) in main petition; `///Versus///` (mixed case) in Index/Synopsis/List.
-- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT NAGPUR" (NO period at end — distinct from Cri Appeal).
+- **Court header:** "IN THE HIGH COURT OF JUDICATURE AT BOMBAY BENCH AT [BENCH CITY]" (NO period at end — distinct from Cri Appeal).
 - **Statutory opening:** "CONSTITUTION" — note the correct spelling (a common typo is "CONSTITUION" without the second "T"; the Registry rejects pleadings with this misspelling).
 - **Salutation:** "The petitioner most humbly begs to submits as under-" (single line, hyphen ending).
 - **Filing intent line** (after ANNEXURE-A intro): "The Petitioner is filing this instant writ petition on the following facts and grounds."

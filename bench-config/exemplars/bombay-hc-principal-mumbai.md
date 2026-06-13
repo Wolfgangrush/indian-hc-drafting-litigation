@@ -28,16 +28,16 @@ pil_rules: |
   Bombay High Court Public Interest Litigation Rules, 2010
 ```
 
-## Section 3-12 — As per Bombay HC Nagpur exemplar
+## Section 3-12 — As per Bombay HC exemplar
 
-Most values mirror `bombay-hc-nagpur.md` except:
+Most values mirror `bombay-hc.md` except:
 
 ```yaml
-counsel_place: "MUMBAI"                     # Different from "NAGPUR"
+counsel_place: "MUMBAI"                     # Different from "[PLACE]"
 ```
 
-The Principal Bench also handles Original Side jurisdiction (commercial matters, admiralty, testamentary/intestate, etc.), which the Nagpur Bench does not. For Original Side matters, refer to Bombay HC (Original Side) Rules; cause title may differ slightly (e.g., "ON THE ORIGINAL SIDE" sub-line for OS suits).
+The Principal Bench also handles Original Side jurisdiction (commercial matters, admiralty, testamentary/intestate, etc.), which the bench you specify does not. For Original Side matters, refer to Bombay HC (Original Side) Rules; cause title may differ slightly (e.g., "ON THE ORIGINAL SIDE" sub-line for OS suits).
 
-For Appellate Side matters at the Principal Bench, the rest of the conventions are the same as Nagpur.
+For Appellate Side matters at the Principal Bench, the rest of the conventions are the same as [bench city].
 
-**Pull from `bombay-hc-nagpur.md` for full content; override only the values noted above.**
+**Pull from `bombay-hc.md` for full content; override only the values noted above.**
