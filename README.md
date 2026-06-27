@@ -1,3 +1,17 @@
+<div align="center">
+  <img src="docs/banner.png" width="820"/>
+
+  **Draft pleadings across all 25 Indian High Courts — from a single Claude plugin**
+
+  Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
+
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+  [![Claude Compatible](https://img.shields.io/badge/Claude-Compatible-8A2BE2)](#)
+  [![25 High Courts](https://img.shields.io/badge/25_High_Courts-bench--config-2ea44f)](#)
+  [![13 Case Types](https://img.shields.io/badge/13_Case_Types-skills-ff6b6b)](#)
+</div>
+
+
 # indian-hc-drafting
 
 > **Open-source Claude-compatible plugin for drafting pleadings before any High Court of India.**
